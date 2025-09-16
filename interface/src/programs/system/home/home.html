@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>openThalis</title>
+    <link rel="stylesheet" href="/programs/system/home/home.css">
+</head>
+<body>
+    <div class="home-container">
+        <!-- Settings Dropdown Menu -->
+        <div class="settings-dropdown">
+            <button class="settings-btn">
+                <span class="settings-icon">⚙</span>
+            </button>
+            <div class="dropdown-content">
+                <div class="dropdown-item disabled" data-value="auto">
+                    <span class="item-text">auto</span>
+                </div>
+                <div class="dropdown-item selected" data-value="chat">
+                    <span class="item-text">chat</span>
+                    <span class="checkmark">✓</span>
+                </div>
+                <div class="dropdown-item disabled" data-value="env">
+                    <span class="item-text">env</span>
+                </div>
+                <div class="dropdown-item disabled" data-value="web browse">
+                    <span class="item-text">web browse</span>
+                </div>
+                <div class="dropdown-item disabled" data-value="web page">
+                    <span class="item-text">web page</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="home-wrapper">
+            <h1 class="logo">openThalis</h1>
+            <div class="home-box-container">
+                <div class="home-input-container">
+                    <input type="text" class="home-input" placeholder="Vi Veri Veniversum Vivus Vici" autofocus>
+                    <button class="home-send-btn" title="Send">↑</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { initializeHome } from '/src/programs/system/home/home.js';
+        const root = document.querySelector('.home-container');
+        if (root && typeof initializeHome === 'function') {
+            initializeHome(root);
+        }
+    </script>
+</body>
+</html>

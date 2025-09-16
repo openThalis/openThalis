@@ -1,0 +1,68 @@
+.settings-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-top: 30px;
+    border-top: 1px solid #3a3a3a;
+    position: sticky;
+    bottom: 0;
+    background-color: #252526;
+    padding-bottom: 130px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #0066cc;
+    color: #e8eaed;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #3a3a3a;
+    color: #e8eaed;
+    border: 1px solid #3a3a3a;
+}
+
+.btn-secondary:hover {
+    background: #4a4a4a;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+    border-color: #dc3545;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-1px);
+}
+
+.btn.modified {
+    background: #28a745 !important;
+    animation: pulse 2s infinite;
+}
+
+

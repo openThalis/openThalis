@@ -1,0 +1,53 @@
+.api-keys-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+}
+
+.api-key-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 1.5rem;
+    background: #252526;
+    border-radius: 12px;
+    border: 1px solid #3a3a3a;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.api-key-label {
+    font-size: 1rem;
+    color: #e8eaed;
+    font-weight: 500;
+}
+
+.api-key-input {
+    background: #1e1e1e;
+    color: #e8eaed;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 50px;
+}
+
+.api-key-input:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.api-key-input::placeholder {
+    color: #9aa0a6;
+}
+
+.add-api-key-btn {
+    align-self: center;
+    margin-top: 8px;
+}
+
+

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aether Program</title>
+    <link rel="stylesheet" href="program.css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="loading" class="loading-state">
+        Loading program...
+      </div>
+      
+      <div id="error" class="error-state hidden">
+        <h3>Error Loading Program</h3>
+        <p id="error-message"></p>
+      </div>
+      
+      <div id="program-content" class="hidden">
+        <!-- User program content will be injected here -->
+      </div>
+    </div>
+
+    <script src="/config.js"></script>
+    <script type="module" src="program.js"></script>
+  </body>
+</html>

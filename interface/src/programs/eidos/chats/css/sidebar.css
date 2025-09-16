@@ -1,0 +1,79 @@
+/* Left sidebar (scoped) */
+.chats-component .left-bar {
+    width: 300px;
+    background-color: #2d2d2d;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+    flex-shrink: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+}
+
+.chats-component .left-bar.hidden {
+    margin-left: -300px;
+}
+
+/* Conversations list */
+.chats-component .conversations-list {
+    padding-left: 15px;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.chats-component .conversations-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #2d2d2d;
+    padding-right: 5px;
+    padding-top: 15px;
+}
+
+/* Custom scrollbar styling for webkit browsers */
+.chats-component .conversations-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chats-component .conversations-container::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 4px;
+    /* Add left margin for spacing */
+    margin-left: 4px;
+}
+
+.chats-component .conversations-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.chats-component .conversations-container::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+.chats-component .conversation-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    border: 1px solid #e9ecef;
+    transition: var(--transition);
+}
+
+.chats-component .conversation-item:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
+.chats-component .conversation-item.active {
+    background-color: #e7f3ff;
+    border-color: var(--primary-color);
+} 

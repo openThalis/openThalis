@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Files Manager</title>
+    <link rel="stylesheet" href="/programs/envs/local/local.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <div class="toolbar">
+          <div class="nav-buttons">
+            <button id="back-btn" class="icon-btn" title="Back">⟵</button>
+            <button id="forward-btn" class="icon-btn" title="Forward">⟶</button>
+            <button id="up-btn" class="icon-btn" title="Up">⬆</button>
+            <button id="refresh-btn" class="icon-btn" title="Refresh">⟳</button>
+          </div>
+          <div class="address-bar">
+            <div id="breadcrumb" class="breadcrumb"></div>
+          </div>
+          <div class="search-box">
+            <input id="search-input" class="path-input" type="search" placeholder="Search" />
+          </div>
+        </div>
+        <div class="command-bar">
+          <div class="menu-group">
+            <button id="new-btn" class="btn" title="New">New ▾</button>
+            <div id="new-menu" class="dropdown" hidden>
+              <button data-new="folder">Folder</button>
+              <button data-new="file">File</button>
+            </div>
+          </div>
+          <button id="upload-btn" class="btn btn-secondary" title="Upload files">Upload</button>
+          <button id="cut-btn" class="btn btn-secondary" title="Cut">Cut</button>
+          <button id="copy-btn" class="btn btn-secondary" title="Copy">Copy</button>
+          <button id="paste-btn" class="btn btn-secondary" title="Paste">Paste</button>
+          <button id="rename-btn" class="btn btn-secondary" title="Rename">Rename</button>
+          <button id="delete-btn" class="btn btn-secondary" title="Delete">Delete</button>
+          <div class="spacer"></div>
+          <div id="statusbar" class="statusbar" aria-live="polite"></div>
+          <div class="spacer"></div>
+          <div class="menu-group">
+            <button id="sort-btn" class="btn btn-secondary" title="Sort">Sort ▾</button>
+            <div id="sort-menu" class="dropdown" hidden>
+              <button data-sort="name">Name</button>
+              <button data-sort="modified">Date modified</button>
+              <button data-sort="type">Type</button>
+              <button data-sort="size">Size</button>
+              <hr />
+              <button data-dir="asc">Ascending</button>
+              <button data-dir="desc">Descending</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button id="view-btn" class="btn btn-secondary" title="View">View ▾</button>
+            <div id="view-menu" class="dropdown" hidden>
+              <button data-view="details">Details</button>
+              <button data-view="icons">Large icons</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="local">
+      <aside id="nav-pane" class="nav-pane">
+        <div class="nav-section">
+          <div class="nav-title">Quick access</div>
+          <div id="nav-quick" class="nav-list"></div>
+        </div>
+        <div class="nav-section">
+          <div class="nav-title">Drives</div>
+          <div id="nav-drives" class="nav-list"></div>
+        </div>
+        <div class="nav-help">
+          <button id="help-btn" class="mini-btn" title="How Local works">?</button>
+        </div>
+      </aside>
+      <section class="content-pane">
+        <div id="details-header" class="details-header">
+          <div data-col="name" class="col col-name" title="Sort by Name">Name</div>
+          <div data-col="modified" class="col col-modified" title="Sort by Date modified">Date modified</div>
+          <div data-col="type" class="col col-type" title="Sort by Type">Type</div>
+          <div data-col="size" class="col col-size" title="Sort by Size">Size</div>
+        </div>
+        <div id="listing" class="listing" aria-live="polite" aria-busy="false"></div>
+        <div id="empty" class="empty-state" hidden>No items</div>
+        <div id="error" class="error" hidden></div>
+      </section>
+    </main>
+
+    <menu id="context-menu" class="context-menu" type="context" hidden>
+      <button data-cmd="open-new-tab">Open in new tab</button>
+      <button data-cmd="cut">Cut</button>
+      <button data-cmd="copy">Copy</button>
+      <button data-cmd="paste">Paste</button>
+      <button data-cmd="copy-path">Copy Path</button>
+      <button data-cmd="rename">Rename</button>
+      <button data-cmd="delete">Delete</button>
+      <hr />
+      <button data-cmd="properties">Properties</button>
+    </menu>
+
+    <menu id="bg-context-menu" class="context-menu" type="context" hidden>
+      <button data-cmd="bg-open-new-tab">Open in new tab</button>
+      <button data-cmd="bg-new-folder">New folder</button>
+      <button data-cmd="bg-new-file">New file</button>
+      <hr />
+      <button data-cmd="bg-paste">Paste</button>
+      <button data-cmd="bg-copy-path">Copy Path</button>
+      <button data-cmd="bg-refresh">Refresh</button>
+    </menu>
+
+    
+
+    <dialog id="app-modal" class="app-dialog" aria-modal="true">
+      <form id="app-modal-form" method="dialog" class="dialog-form">
+        <div class="dialog-header">
+          <div id="app-modal-title" class="dialog-title"></div>
+          <button id="app-modal-close" class="icon-btn" type="button">✕</button>
+        </div>
+        <div class="dialog-body">
+          <div id="app-modal-message" class="dialog-message"></div>
+          <label id="app-modal-label" class="sr-only" for="app-modal-input"></label>
+          <input id="app-modal-input" class="path-input" type="text" hidden />
+        </div>
+        <div class="dialog-actions">
+          <button id="app-modal-cancel" class="btn btn-secondary" value="cancel" type="button">Cancel</button>
+          <button id="app-modal-ok" class="btn" value="default">OK</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  </body>
+  <script src="/config.js"></script>
+  <script type="module" src="/src/programs/envs/local/local.js"></script>
+  </html>
+
+

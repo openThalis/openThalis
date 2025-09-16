@@ -1,0 +1,67 @@
+#right-sidebar {
+    background-color: var(--sidebar-bg);
+    transition: width 0.1s ease-out;
+    overflow-y: auto;
+    width: 250px;
+    flex: 0 0 auto;
+    overflow-x: hidden;
+    position: relative;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    will-change: width;
+    border-left: 1px solid var(--text-color);
+}
+
+#right-sidebar .right-sidebar-content {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    position: relative;
+}
+
+/* Update hidden state styles */
+#right-sidebar.hidden {
+    width: 0 !important;
+    min-width: 0 !important; /* Force min-width */
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    flex-basis: 0 !important; /* Force flex-basis */
+    visibility: hidden; /* Add visibility hidden */
+}
+
+#right-sidebar:not(.hidden) .tab-host-content {
+    display: flex;
+}
+
+#right-sidebar.hidden .tab-host-content {
+    margin-left: 0;
+    margin-right: 0;
+    display: none; /* Force hide content */
+}
+
+/* Resize handle styles */
+#right-sidebar .resize-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    cursor: ew-resize;
+    z-index: 100;
+    touch-action: none;
+    will-change: transform;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+#right-sidebar.resizing {
+    transition: none !important;
+    will-change: width;
+    user-select: none;
+}

@@ -1,0 +1,38 @@
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 25px;
+  border-top: 1px solid #3a3a3a;
+  position: sticky;
+  bottom: 0;
+  background-color: #252526;
+  padding-bottom: 25px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary { background-color: #0066cc; color: white; }
+.btn-primary:hover { background-color: #0056b3; }
+
+.btn-secondary { background-color: #3a3a3a; color: #e8eaed; }
+.btn-secondary:hover { background-color: #4a4a4a; }
+
+/* Modified state for Save button to indicate unsaved changes */
+.btn.modified { background: #28a745 !important; animation: pulse 2s infinite; }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+

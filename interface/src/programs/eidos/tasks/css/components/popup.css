@@ -1,0 +1,166 @@
+/* Popup and Modal Styles */
+
+.task-popup, .task-settings-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-popup.hidden, .task-settings-modal.hidden {
+    display: none;
+}
+
+.popup-overlay, .task-settings-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+.popup-content, .task-settings-content {
+    position: relative;
+    background-color: #252526;
+    border: 1px solid #3a3a3a;
+    border-radius: 24px;
+    max-width: 640px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 16px 24px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    animation: popupSlideIn 0.3s ease-out;
+}
+
+.popup-error, .task-settings-error {
+    margin: -8px 0 16px;
+    padding: 10px 12px;
+    border: 1px solid #f44336;
+    background-color: rgba(244, 67, 54, 0.08);
+    color: #f44336;
+    border-radius: 10px;
+    font-size: 0.875rem;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.popup-header, .task-settings-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.header-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.popup-action-buttons, .task-settings-action-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px
+}
+
+.popup-action-buttons.hidden, .task-settings-action-buttons.hidden {
+    display: none !important;
+}
+
+.popup-body, .task-settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.popup-footer, .task-settings-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #3a3a3a;
+}
+
+.delete-popup-content {
+    position: relative;
+    background-color: #252526;
+    border: 1px solid #f44336;
+    border-radius: 16px;
+    max-width: 480px;
+    width: 90%;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    animation: popupSlideIn 0.3s ease-out;
+}
+
+.delete-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.delete-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f44336;
+    margin: 0;
+}
+
+.delete-body {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.delete-message {
+    font-size: 1rem;
+    color: #e8eaed;
+    margin-bottom: 12px;
+}
+
+.delete-task-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e8eaed;
+    background-color: #3a3a3a;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    word-break: break-word;
+}
+
+.delete-warning {
+    font-size: 0.875rem;
+    color: #9aa0a6;
+    margin-top: 12px;
+}
+
+.delete-footer {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}

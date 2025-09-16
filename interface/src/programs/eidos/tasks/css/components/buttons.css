@@ -1,0 +1,192 @@
+/* Button Styles */
+
+.add-task-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: #4a4a4a;
+    color: #e8eaed;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.add-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.add-task-btn:hover {
+    background-color: #5a5a5a;
+    transform: translateY(-1px);
+}
+
+.add-task-btn:active {
+    transform: translateY(0);
+}
+
+.popup-action-btn, .task-settings-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background-color: transparent;
+    color: #9aa0a6;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.popup-action-btn:hover, .task-settings-action-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+    color: #e8eaed;
+}
+
+.popup-action-btn.delete-btn:hover, .task-settings-action-btn.delete-btn:hover {
+    background-color: #f44336;
+    border-color: #f44336;
+    color: white;
+}
+
+.task-settings-action-btn.running {
+    background-color: #4a4a4a;
+    border-color: #5a5a5a;
+    color: #e8eaed;
+}
+
+.close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #3a3a3a;
+    background-color: transparent;
+    color: #e8eaed;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+}
+
+.create-task-btn {
+    width: 100%;
+    padding: 12px 24px;
+    background-color: #4a4a4a;
+    color: #e8eaed;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.create-task-btn:hover {
+    background-color: #5a5a5a;
+    transform: translateY(-1px);
+}
+
+.create-task-btn:active {
+    transform: translateY(0);
+}
+
+.cancel-delete-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #e8eaed;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-delete-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+}
+
+.confirm-delete-btn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.confirm-delete-btn:hover {
+    background-color: #d32f2f;
+    transform: translateY(-1px);
+}
+
+.confirm-delete-btn:active {
+    transform: translateY(0);
+}
+
+.task-details-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: transparent;
+    color: #9aa0a6;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.task-details-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+    color: #e8eaed;
+    transform: translateY(-1px);
+}
+
+.edit-task-btn:hover {
+    background-color: #4a4a4a;
+    border-color: #5a5a5a;
+    color: #e8eaed;
+}
+
+.edit-btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #3a3a3a;
+    background-color: transparent;
+    color: #e8eaed;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.edit-btn-header:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+}

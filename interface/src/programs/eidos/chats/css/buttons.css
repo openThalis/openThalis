@@ -1,0 +1,36 @@
+/* Button styles - consolidated (scoped) */
+.chats-component .btn-primary {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+
+.chats-component .btn-secondary,
+.chats-component .toggle-button {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    font-family: inherit;
+    color: #ffffff;
+}
+
+
+.chats-component .toggle-button .material-icons {
+    font-size: 20px;
+    color: #ffffff;
+}
+

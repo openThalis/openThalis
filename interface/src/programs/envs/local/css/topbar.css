@@ -1,0 +1,111 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #1e1e1e;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar .container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 16px 10px;
+  min-height: 120px;
+}
+
+.toolbar { 
+  display: grid; 
+  grid-template-columns: auto 1fr auto; 
+  gap: 10px; 
+  align-items: center;
+  min-height: 44px;
+}
+.nav-buttons { display: flex; gap: 6px; }
+
+.path-input {
+  flex: 1 1 auto;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.address-bar { 
+  background: #1e1e1e; 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  padding: 10px 12px; 
+  display: flex; 
+  align-items: center;
+  min-height: 44px;
+  max-height: 44px;
+  overflow: hidden;
+}
+
+.address-bar .breadcrumb { 
+  margin: 0; 
+  max-height: 24px;
+  overflow: hidden;
+}
+.search-box input { 
+  width: 200px; 
+  height: 44px;
+  box-sizing: border-box;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-height: 44px;
+  max-height: 44px;
+  overflow: hidden;
+}
+
+.command-bar { 
+  display: flex; 
+  gap: 10px; 
+  align-items: center;
+  min-height: 44px;
+}
+
+.command-bar .spacer { flex: 1 1 auto; }
+
+.menu-group { position: relative; }
+
+.dropdown { 
+  position: absolute; 
+  right: 0; top: 100%; 
+  background: #1e1e1e; 
+  border: 1px solid var(--border); 
+  border-radius: 8px; 
+  padding: 6px; 
+  display: grid; 
+  gap: 4px; 
+  min-width: 180px; 
+  z-index: 30; 
+}
+
+
+.dropdown button { 
+  background: transparent; 
+  border: 1px solid transparent; 
+  color: var(--text); 
+  text-align: left; 
+  padding: 8px 10px; 
+  border-radius: 6px; 
+  cursor: pointer; }
+
+.dropdown button:hover { 
+  background: rgba(255,255,255,0.06);
+}
+
+.dropdown button.active { 
+  background: rgba(90,160,255,0.2); border-color: #3d6fb6; }
+.dropdown hr { 
+  border: none; border-top: 1px solid var(--border); margin: 6px 2px; }
+
+

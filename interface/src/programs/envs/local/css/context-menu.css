@@ -1,0 +1,8 @@
+/* Context Menu */
+.context-menu { position: fixed; background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 6px; display: grid; gap: 4px; z-index: 1000; box-shadow: 0 8px 24px rgba(0,0,0,0.45); max-width: min(300px, 90vw); }
+.context-menu[hidden] { display: none; }
+.context-menu button { background: transparent; border: 1px solid transparent; color: var(--text); text-align: left; padding: 8px 10px; border-radius: 6px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.context-menu button:hover { background: rgba(255,255,255,0.06); }
+.context-menu hr { border: none; border-top: 1px solid var(--border); margin: 6px 2px; }
+
+

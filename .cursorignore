@@ -1,0 +1,15 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+target/
+.backups/
+.elseLoad
+.dev
+.else
+.tbi
+.*/
+
+#README.md
+#LICENCE
+#CHANGELOG.md
+#NOTICEME.md
+#SUPPORT.md
+#template.env

@@ -1,0 +1,95 @@
+/* Shared tab host styles */
+.tab-host-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    width: 100%;
+    min-height: 0;
+    max-height: 100%;
+}
+
+.tabs-wrapper {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    background-color: #252526;
+    border-bottom: 1px solid #3a3a3a;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    min-height: 35px;
+}
+
+/* Tab container scrolling behavior */
+.tabs-container {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #3c3c3c #1a1a1a;
+    -ms-overflow-style: none;
+    min-height: 35px;
+}
+
+/* Custom scrollbar styling for tab containers */
+.tabs-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tabs-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.tabs-container::-webkit-scrollbar-thumb {
+    background: #3c3c3c;
+    border-radius: 2px;
+}
+
+.tabs-container::-webkit-scrollbar-thumb:hover {
+    background: #4c4c4c;
+}
+
+/* Corner styling for completeness */
+.tabs-container::-webkit-scrollbar-corner {
+    background: #1a1a1a;
+}
+
+/* Tab content area - remove width constraints to avoid influencing embedded programs */
+.tab-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 0;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+/* Ensure embedded content fills available space without constraints */
+.tab-content > * {
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    max-height: 100%;
+}
+
+.welcome-message {
+    text-align: center;
+    padding: 50px;
+}
+
+.welcome-message h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.welcome-message p {
+    font-size: 16px;
+    color: #888;
+}

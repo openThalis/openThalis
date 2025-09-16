@@ -1,0 +1,18 @@
+/* Custom scrollbar styling for webkit browsers */
+.chats-component .messages-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chats-component .messages-container::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 4px;
+}
+
+.chats-component .messages-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.chats-component .messages-container::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+} 
