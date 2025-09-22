@@ -7,6 +7,7 @@ export function createTabContextMenu(tab, component) {
     const menuItems = [
         { label: 'Clone', action: () => cloneTab(tab, component) },
         null,
+        { label: 'Close', action: () => closeTab(tab, component) },
         { label: 'Close All', action: () => closeAllTabs(component) },
         { label: 'Close Others', action: () => closeOtherTabs(tab, component) },
         null,
@@ -38,6 +39,25 @@ export function createTabContextMenu(tab, component) {
 function cloneTab(tab, component) {
     const tabManager = component === 'center' ? window.centerTabsManager : window.rightTabsManager;
     tabManager.addTab(`${tab.name} (Copy)`, tab.content);
+}
+
+function closeTab(tab, component) {
+    const tabManager = component === 'center' ? window.centerTabsManager : window.rightTabsManager;
+
+    // Dispatch the same custom event that the close button uses
+    try {
+        const event = new CustomEvent('tabs:removed', {
+            detail: {
+                component: component,
+                tabName: tab.name,
+                contentElement: tab.contentElement
+            }
+        });
+        document.dispatchEvent(event);
+    } catch {}
+
+    // Remove the tab
+    tabManager.removeTab(tab.name);
 }
 
 function closeAllTabs(component) {

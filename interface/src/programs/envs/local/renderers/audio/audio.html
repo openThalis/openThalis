@@ -5,40 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Audio Player</title>
     <link rel="stylesheet" href="/src/programs/envs/local/css/base.css" />
-    <style>
-      body { margin: 0; background:#0b0f16; display:flex; flex-direction:column; height:100vh; }
-      header { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; border-bottom:1px solid var(--border); }
-      main { flex:1; display:grid; place-items:center; overflow:auto; }
-      audio { width: 80%; max-width: 720px; }
-      .meta { color: var(--muted); font-size:12px; }
-    </style>
+    <link rel="stylesheet" href="/src/programs/envs/local/renderers/audio/audio.css" />
   </head>
   <body>
     <header>
       <div>
         <div id="title"></div>
-        <div id="meta" class="meta"></div>
       </div>
       <div>
-        <a id="download" class="btn btn-secondary" target="_blank" rel="noreferrer">Download</a>
       </div>
     </header>
     <main>
-      <audio id="aud" controls></audio>
+      <div class="media-container">
+        <audio id="aud"></audio>
+        <div class="controls">
+          <button id="play-pause" class="control-btn">▶</button>
+          <div class="seek-bar" id="seek-bar">
+            <div class="buffered-ranges" id="buffered-ranges"></div>
+            <div class="seek-progress" id="seek-progress"></div>
+          </div>
+          <span id="current-time" class="time-display" title="Click to jump to time">0:00</span>
+          <span class="time-display">/</span>
+          <span id="duration" class="time-display">0:00</span>
+          <div class="volume-container">
+            <button id="volume-btn" class="control-btn">🔊</button>
+            <div class="volume-bar" id="volume-bar">
+              <div class="volume-progress" id="volume-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <script src="/config.js"></script>
-    <script type="module">
-      const params = new URLSearchParams(location.search);
-      const path = params.get('path') || '';
-      if (!window.__BACKEND_URL__) throw new Error('Backend URL is not configured');
-      const base = String(window.__BACKEND_URL__).replace(/\/$/, '');
-      const url = `${base}/api/raw?path=${encodeURIComponent(path)}`;
-      document.getElementById('aud').src = url;
-      document.getElementById('download').href = url;
-      const name = (path.split(/\\|\//).pop() || 'Audio');
-      document.getElementById('title').textContent = name;
-      document.getElementById('meta').textContent = path;
-    </script>
+    <script type="module" src="/src/programs/envs/local/renderers/audio/audio.js"></script>
   </body>
   </html>
 

@@ -65,11 +65,19 @@
   overflow: hidden;
 }
 
-.command-bar { 
-  display: flex; 
-  gap: 10px; 
+.command-bar {
+  display: flex;
+  gap: 10px;
   align-items: center;
   min-height: 44px;
+  height: 44px;
+}
+
+.statusbar {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 
 .command-bar .spacer { flex: 1 1 auto; }

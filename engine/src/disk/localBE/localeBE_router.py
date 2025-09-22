@@ -3,8 +3,9 @@ from __future__ import annotations
 import os
 from typing import List, Optional
 
-from fastapi import APIRouter, HTTPException, UploadFile, File, Query, Body
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi import APIRouter, HTTPException, UploadFile, File, Query, Body, Header
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+import mimetypes
 
 from src.disk.localBE.config import resolve_home_path
 from src.disk.localBE.services.system_service import list_drives, known_folders
@@ -74,13 +75,62 @@ async def listdir(path: str = Query(...), q: Optional[str] = Query(None)):
 
 
 @router.get("/raw")
-async def raw(path: str = Query(...)):
+async def raw(path: str = Query(...), range: str | None = Header(default=None, convert_underscores=False)):
     try:
         file_path = normalize_input_path(path)
         if not os.path.exists(file_path) or not os.path.isfile(file_path):
             raise E.NotFoundError("File not found")
-        # Starlette's FileResponse handles range requests for media where supported
-        return FileResponse(file_path)
+
+        file_size = os.path.getsize(file_path)
+        content_type = mimetypes.guess_type(file_path)[0] or "application/octet-stream"
+
+        # If a Range header is provided, serve partial content
+        if range and range.startswith("bytes="):
+            # Parse Range header (single range only)
+            range_spec = range.replace("bytes=", "").strip()
+            start_str, _, end_str = range_spec.partition("-")
+            try:
+                start = int(start_str) if start_str else 0
+                end = int(end_str) if end_str else (file_size - 1)
+            except ValueError:
+                # Invalid range; return full file response
+                return FileResponse(file_path, media_type=content_type, headers={"Accept-Ranges": "bytes"})
+
+            # Clamp values
+            start = max(0, start)
+            end = min(file_size - 1, end)
+            if start > end:
+                start, end = 0, file_size - 1
+
+            chunk_size = 1024 * 1024
+
+            def iter_file_range(fp: str, start_pos: int, end_pos: int, chunk: int):
+                with open(fp, "rb") as f:
+                    f.seek(start_pos)
+                    bytes_remaining = end_pos - start_pos + 1
+                    while bytes_remaining > 0:
+                        to_read = min(chunk, bytes_remaining)
+                        data = f.read(to_read)
+                        if not data:
+                            break
+                        bytes_remaining -= len(data)
+                        yield data
+
+            headers = {
+                "Content-Range": f"bytes {start}-{end}/{file_size}",
+                "Accept-Ranges": "bytes",
+                "Content-Length": str(end - start + 1),
+            }
+
+            return StreamingResponse(
+                iter_file_range(file_path, start, end, chunk_size),
+                status_code=206,
+                media_type=content_type,
+                headers=headers,
+            )
+
+        # No Range header: return full file with Accept-Ranges
+        return FileResponse(file_path, media_type=content_type, headers={"Accept-Ranges": "bytes"})
     except Exception as exc:
         _raise_http_from_domain(exc)
 

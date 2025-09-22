@@ -225,7 +225,7 @@ class UserSelection {
                 throw new Error('Failed to load users');
             }
         } catch (error) {
-            console.error('Error loading users:', error);
+            console.error('Error loading instances:', error);
             this.showError('Failed to load instances. Please try again.');
         } finally {
             this.setLoading(false);

@@ -13,7 +13,7 @@ export const MENU_SECTIONS = {
     envs: [
         { name: 'Local', action: 'local' },
         { name: 'Aether', action: 'aether' },
-        { name: 'Spaces', action: 'spaces' }
+        //{ name: 'Spaces', action: 'spaces' }
     ],
     public: [
         //{ name: 'Support', action: 'support'},
