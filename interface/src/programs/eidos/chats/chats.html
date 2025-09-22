@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chats</title>
+    <link rel="stylesheet" href="programs/eidos/chats/chats.css">
+    <link rel="stylesheet" href="programs/eidos/chats/components/left_bar/left_bar.css">
+    <link rel="stylesheet" href="programs/eidos/chats/components/conversation/conversation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="chats-component">
+        <!-- Main App -->
+        <div class="app-container">
+            <div class="top-bar">
+                <div class="left-buttons">
+                    <button class="toggle-button" id="toggleLeft">
+                        <span class="material-icons">menu</span>
+                    </button>
+                    <button class="new-chat-button" id="newChatBtn">
+                        <span class="material-icons">add</span>
+                    </button>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="left-bar">
+                    <div class="conversations-list">
+                        <div class="conversations-container">
+                            <!-- Conversations will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-title"><span class="chat-title-text">No conversation</span></div>
+                        <button class="chat-settings-button" id="chatSettingsBtn" title="Conversation settings">
+                            <span class="material-icons">settings</span>
+                        </button>
+                        <div class="chat-settings-menu" id="chatSettingsMenu">
+                            <button class="menu-item" data-action="rename">Rename</button>
+                            <button class="menu-item" data-action="fork">Fork</button>
+                            <button class="menu-item" data-action="delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="messages-container">
+                        <!-- Messages will be dynamically inserted here -->
+                    </div>
+                    <div class="input-container">
+                        <div class="error-message"></div>
+                        <textarea></textarea>
+                        <button class="send-button" disabled>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

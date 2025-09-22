@@ -1,0 +1,172 @@
+/* Common tab container styles */
+.tabs-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #3c3c3c #1a1a1a;
+    -ms-overflow-style: none;
+    min-height: 35px;
+    background-color: #252526;
+    border-bottom: 1px solid #3a3a3a;
+    white-space: nowrap;
+    width: 100%;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* WebKit dark scrollbar styling for tabs containers */
+.tabs-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.tabs-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.tabs-container::-webkit-scrollbar-thumb {
+    background: #3c3c3c;
+    border-radius: 2px;
+}
+
+.tabs-container::-webkit-scrollbar-thumb:hover {
+    background: #4c4c4c;
+}
+
+.tabs-container::-webkit-scrollbar-corner {
+    background: #1a1a1a;
+}
+
+/* Common tab button styles */
+.tab-button {
+    flex: 0 0 auto;
+    min-width: min-content;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #1e1e1e; /* Darker background for unselected tabs */
+    color: #888; /* Dimmer text for unselected tabs */
+    border: 1px solid #3a3a3a;
+    border-bottom: none;
+    padding: 5px 10px;
+    margin-right: 2px;
+}
+
+.tab-button:active {
+    cursor: grabbing;
+}
+
+.tab-button.dragging {
+    opacity: 0.6;
+    transform: scale(1.05);
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: none;
+}
+
+.tab-button .tab-name {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+}
+
+.tab-button:hover {
+    background-color: #2d2d2d;
+    color: #bbb;
+}
+
+.tab-button.active {
+    background-color: #3c3c3c; /* Lighter background for selected tab */
+    color: #ffffff; /* Brighter text for selected tab */
+    border-bottom: none;
+    position: relative;
+}
+
+/* Common close button styles */
+.close-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.close-tab:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+/* Common pin indicator styles */
+.tab-button .tab-name.pinned::before {
+    content: "📌";
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+/* Common tab content styles */
+.tab-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 0;
+    overflow: hidden; /* delegate scrolling to inner program */
+    min-height: 0;
+    min-width: 0;
+}
+
+/* Tab drop indicator for drag and drop reordering */
+.tab-drop-indicator {
+    width: 2px;
+    height: 30px;
+    background-color: #2563eb;
+    border-radius: 1px;
+    margin: 0 2px;
+    animation: drop-indicator-pulse 1s ease-in-out infinite alternate;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 999;
+}
+
+.tab-drop-indicator::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 8px;
+    height: 8px;
+    background-color: #2563eb;
+    border-radius: 50%;
+}
+
+.tab-drop-indicator::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: -3px;
+    width: 8px;
+    height: 8px;
+    background-color: #2563eb;
+    border-radius: 50%;
+}
+
+@keyframes drop-indicator-pulse {
+    from {
+        opacity: 0.7;
+        box-shadow: 0 0 2px #2563eb;
+    }
+    to {
+        opacity: 1;
+        box-shadow: 0 0 8px #2563eb;
+    }
+}

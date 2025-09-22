@@ -1,0 +1,240 @@
+.altar-bar {
+    background-color: #252526;
+    color: #00ff00;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    font-family: monospace;
+    width: 100%;
+    position: relative;
+    min-height: 30px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.altar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a2a2a;
+    height: 30px;
+    user-select: none;
+    border-bottom: 1px solid #3a3a3a;
+    cursor: pointer;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.altar-header:hover {
+    background-color: #3a3a3a;
+}
+
+.altar-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Take remaining space after header */
+    overflow: hidden; /* Prevent overflow */
+    min-width: 0; /* Allow flex children to shrink below content size */
+}
+
+#altar-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background-color: #1f1f1f;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.altar-toggle {
+    background: #2c2c2c;
+    color: #ddd;
+    border: 1px solid #3c3c3c;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.altar-toggle:hover {
+    background: #363636;
+}
+
+.altar-toggle.active,
+.altar-toggle[aria-pressed="true"] {
+    background: #2563eb;
+    border-color: #3b82f6;
+    color: #fff;
+}
+
+.altar-toggle:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.3);
+}
+
+.altar-toggle:disabled:hover {
+    background: #2c2c2c;
+}
+
+#altar-chat-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+}
+
+/* Custom scrollbar styling for altar chat container */
+#altar-chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#altar-chat-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+#altar-chat-container::-webkit-scrollbar-thumb {
+    background: #3c3c3c;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#altar-chat-container::-webkit-scrollbar-thumb:hover {
+    background: #4c4c4c;
+}
+
+#altar-chat-container::-webkit-scrollbar-corner {
+    background: #1a1a1a;
+}
+
+.altar-bar .message {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-family: monospace;
+    margin: 5px 0;
+    font-size: 12px; /* Smaller font for bottom bar */
+    max-width: 100%;
+}
+
+.altar-message {
+    align-self: flex-start;
+    background-color: #1a1a1a;
+    color: #ffeb3b;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    font-family: monospace;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.altar-user-message {
+    align-self: flex-end;
+    background-color: #1a1a1a;
+    color: #ffeb3b;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    font-family: monospace;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.altar-entity-message {
+    align-self: flex-start;
+    background-color: #1a1a1a;
+    color: #ffeb3b;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    font-family: monospace;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+#altar-input-container {
+    padding: 10px;
+    background-color: #1a1a1a;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+#altar-user-input {
+    flex-grow: 1;
+    background-color: #2c2c2c;
+    border: 1px solid #3c3c3c;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    height: 23px;
+}
+
+#altar-send-button, #altar-ping-button {
+    background-color: #3c3c3c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 12px;
+}
+
+#altar-send-button:hover, #altar-ping-button:hover {
+    background-color: #4c4c4c;
+}
+
+#altar-ping-button {
+    background-color: #2c5282;
+}
+
+#altar-ping-button:hover {
+    background-color: #3670a0;
+}
+
+.altar-resize-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px; /*here*/
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: ns-resize;
+    z-index: 3;
+}
+
+.altar-bar.resizing {
+    user-select: none;
+    transition: none !important;
+}
+
+/* Hide content when minimized */
+.altar-bar.minimized {
+    height: 30px !important;
+}
+
+.altar-bar.minimized .altar-content {
+    display: none;
+}
+
+.altar-bar.minimized .altar-resize-handle {
+    display: none;
+}

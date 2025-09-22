@@ -1,0 +1,46 @@
+
+
+
+.loading-state {
+  text-align: center;
+  padding: 64px;
+  color: #9aa0a6;
+  font-style: italic;
+}
+
+.error-state {
+  color: #f44336;
+  text-align: center;
+  padding: 24px;
+  background-color: rgba(244, 67, 54, 0.08);
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+
+
+/* Style for when no user code is provided */
+.no-user-content {
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 40px;
+}
+
+.no-user-content::before {
+  content: "📝";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+
+

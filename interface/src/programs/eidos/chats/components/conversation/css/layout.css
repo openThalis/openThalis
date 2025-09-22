@@ -1,0 +1,74 @@
+.chats-component .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+    border-bottom: 1px solid #404040;
+    background-color: #222;
+    position: relative;
+}
+
+.chats-component .chat-title {
+    font-size: 16px;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.chats-component .chat-settings-button {
+    background: none;
+    border: 1px solid #404040;
+    color: #e0e0e0;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chats-component .chat-settings-button:hover {
+    background-color: #2d2d2d;
+}
+
+.chats-component .chat-settings-menu {
+    position: absolute;
+    top: 48px;
+    right: 16px;
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    z-index: 200;
+}
+
+.chats-component .chat-settings-menu.open {
+    display: flex;
+}
+
+.chats-component .chat-settings-menu .menu-item {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    text-align: left;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.chats-component .chat-settings-menu .menu-item:hover {
+    background-color: #3a3a3a;
+}
+
+.chats-component .messages-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #1a1a1a;
+    padding: 16px;
+    /* Ensure smooth scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #2d2d2d;
+    overflow-y: auto;
+} 

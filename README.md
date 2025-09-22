@@ -1,0 +1,66 @@
+# openThalis
+
+### A metamorphic application powered by Artificial Intelligence. 
+
+### [Check out the video introduction and demos at openthalis.ai](https://openthalis.ai)
+
+### ⚠️ This project is in beta, released to be familiarized and experimented with so please report any issues you find; check the [notice me file](./NOTICEME.md) for more information.
+
+---
+
+### Features:
+- Create and manage unlimited AI agents with various modes (tools, delegation, awareness, local file access, etc.)
+- Chat with AI agents, that can use perform actions by using tools and collaborate with other agents
+- Summon specific agents during a chat session
+- Allow self-awareness of the source code of openThalis to the AIs for special cases
+- Give access to a folder of files to the agents to use as context for the session and their actions
+- Manage tasks and schedule them at any interval to be done automatically by specific agents
+- Integrated files manager
+- Autocreate programs based on your needs
+- Many features present to explore and more to come...
+
+### User friendly:
+You can jump right in and start using openThalis once you install it. I aim to make the user experience as smooth as possible, you do not need to know anything about programming or AI to use it, so if you have any feedback, please let me know.
+
+### Developer friendly:
+openThalis is built with in mind to be a plug and play application, so you can use it as is or customize it to your needs. You can add your own AI providers, tools, and more easily; just activate the selfawareness mode and ask any of the AIs how to do it (you can even set the local path to its own source code and make openThalis make the changes).
+
+---
+
+## Setup
+
+0. Clone the repository and ensure you have [python](https://www.python.org/downloads/) and [rust](https://www.rust-lang.org/tools/install) ¬ additionally if you want to use local models install [ollama](https://ollama.ai/install) and download the [models](https://ollama.ai/models)
+1. Rename template.env to .env and place 2 exact copies, one in engine and one in interface (you can keep the default values or change them if you want)
+2. Install the python requirements:
+```bash
+pip install -r REQUIREMENTS.txt
+```
+3. Start the engine:
+```bash
+cd engine
+python start_engine.py
+```
+4. Start the interface:
+```bash
+cd interface
+cargo clean
+cargo run
+```
+5. Create a new instance (like how it is shown in the video introduction) and enjoy!
+
+## Docs
+For more information, visit the [docs](https://openthalis.ai/docs); There you will find the documentation for the application, how to install it, and how to add custom commands, models and tools
+
+## Follow us on X
+
+- [x.com/NootkaNika](https://x.com/NootkaNika)
+- [x.com/openThalis](https://x.com/openthalis)
+
+## Contact
+- [openThalis/connect](https://openthalis.ai/connect)
+
+## License
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). For more information, please see the [AGPL-3.0 license text](./LICENCE) or visit [https://www.gnu.org/licenses/agpl-3.0](https://www.gnu.org/licenses/agpl-3.0).

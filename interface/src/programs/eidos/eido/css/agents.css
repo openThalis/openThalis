@@ -1,0 +1,67 @@
+/* Agents dynamic list */
+.agent-item {
+  position: relative;
+  padding: 16px;
+  background: #252526;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.agent-name-input {
+  font-size: 1rem;
+  color: #e8eaed;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.agent-name-input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.agent-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: #e8eaed;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.agent-actions {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.icon-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button:hover { background: rgba(255, 255, 255, 0.06); }
+.icon-button svg { width: 16px; height: 16px; fill: #ffffff; }
+
+

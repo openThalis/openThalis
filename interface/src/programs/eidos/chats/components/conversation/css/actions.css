@@ -1,0 +1,113 @@
+/* Dropdown-based message actions (scoped) */
+
+.chats-component .message-menu-trigger {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: 1px solid #404040;
+    color: #e0e0e0;
+    padding: 4px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(45, 45, 45, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease;
+}
+
+.chats-component .message-menu-trigger .material-icons {
+    font-size: 15px;
+}
+
+.chats-component .message-actions-dropdown {
+    position: absolute;
+    top: 36px;
+    right: 8px;
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    z-index: 300;
+}
+
+.chats-component .message:hover .message-menu-trigger,
+.chats-component .message.selected .message-menu-trigger {
+    opacity: 1;
+    visibility: visible;
+}
+
+.chats-component .message-actions-dropdown.open {
+    display: flex;
+}
+
+.chats-component .message-actions-dropdown .menu-item {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    text-align: left;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.chats-component .message-actions-dropdown .menu-item:hover {
+    background-color: #3a3a3a;
+}
+
+.chats-component .message-actions-dropdown .menu-item.danger {
+    color: #ef5350;
+}
+
+.chats-component .message-actions-dropdown .menu-item.success {
+    color: #66bb6a;
+}
+
+.chats-component .loading-actions {
+    font-size: 12px;
+    color: #b0b0b0;
+    opacity: 1;
+    font-style: italic;
+    padding: 8px 12px;
+}
+
+/* Inline edit controls while editing or drafting */
+.chats-component .message-edit-controls {
+    margin-top: 8px;
+    display: inline-flex;
+    gap: 8px;
+}
+
+.chats-component .save-message,
+.chats-component .cancel-edit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    color: #e0e0e0;
+    background-color: #3a3a3a;
+    border: 1px solid #404040;
+}
+
+.chats-component .save-message {
+    color: #66bb6a;
+    background-color: #1e4a1e;
+}
+
+.chats-component .cancel-edit {
+    color: #ef5350;
+    background-color: #4a1e1e;
+}
+
+.chats-component .save-message:hover,
+.chats-component .cancel-edit:hover {
+    filter: brightness(1.05);
+}

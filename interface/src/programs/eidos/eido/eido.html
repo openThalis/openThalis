@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eidos</title>
+    <link rel="stylesheet" href="/programs/eidos/eido/eido.css">
+</head>
+<body>        
+        <form class="config-form" id="configForm" onsubmit="return false" novalidate>
+                <h1 class="eidos-title">Eido Configuration</h1>
+
+                <!-- Session Configuration -->
+                <div class="form-section">
+                    <h2 class="section-title">Session Settings</h2>
+                    <div class="form-group">
+                        <label for="operatorName">Operator Name</label>
+                        <input type="text" id="operatorName" name="operator_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="purpose">Purpose</label>
+                        <textarea id="purpose" name="purpose" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <!-- Provider Configuration -->
+                <div class="form-section">
+                    <h2 class="section-title">Provider Settings</h2>
+                    <div class="form-group">
+                        <label for="providerName">Provider Name</label>
+                        <select id="providerName" name="provider_name">
+                            <option value="">Select a provider</option>
+                            <option value="ollama">ollama</option>
+                            <option value="xai">xai</option>
+                            <option value="openai">openai</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="custom-provider-field" style="display: none;">
+                        <label for="customProviderName">Custom Provider Name</label>
+                        <input type="text" id="customProviderName" name="custom_provider_name" placeholder="Enter custom provider name">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelName">Model Name</label>
+                        <input type="text" id="modelName" name="model_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelMaxTokens">Model Max Tokens</label>
+                        <input type="number" id="modelMaxTokens" name="model_max_tokens">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelTemperature">Model Temperature</label>
+                        <input type="number" id="modelTemperature" name="model_temperature" step="0.1" min="0" max="2">
+                    </div>
+                </div>
+
+                <!-- Agent Configuration -->
+                <div class="form-section">
+                    <h2 class="section-title">Agent Settings</h2>
+                    <div class="form-group">
+                        <label for="defaultAgent">Default Agent</label>
+                        <select id="defaultAgent" name="default_agent"></select>
+                    </div>
+                    
+                    <div class="agents-section">
+                        <h3 class="subsection-title">Agents</h3>
+                        <div id="agentsList"></div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary" id="addAgentBtn" style="width: 100%;">+ Add agent</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mode Configuration -->
+                <div class="form-section">
+                    <h2 class="section-title">Mode Settings</h2>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agentsMode" name="agents_mode">
+                            <span class="checkmark"></span>
+                            Agents Mode
+                        </label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="awarenessMode" name="awareness_mode">
+                            <span class="checkmark"></span>
+                            Awareness Mode
+                        </label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="toolsMode" name="tools_mode">
+                            <span class="checkmark"></span>
+                            Tools Mode
+                        </label>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="localMode" name="local_mode">
+                            <span class="checkmark"></span>
+                            Local Mode
+                        </label>
+                    </div>
+                    <p style="color: #ffadad; font-size: 0.9rem; margin: 8px 0 0 0; font-style: italic;">Set the local path in the settings section</p>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+        
+        </form>
+</body>
+</html>

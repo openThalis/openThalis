@@ -1,0 +1,24 @@
+/* Toast Notifications (Eido) */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10001;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.toast.show { opacity: 1; transform: translateX(0); }
+.toast-success { background: linear-gradient(135deg, #28a745, #20c997); border-left: 4px solid #155724; }
+.toast-error { background: linear-gradient(135deg, #dc3545, #fd7e14); border-left: 4px solid #721c24; }
+.toast-info { background: linear-gradient(135deg, #007bff, #6f42c1); border-left: 4px solid #004085; }
+
+

@@ -1,0 +1,126 @@
+.settings-container {
+    padding: 10px;
+    background-color: #252526;
+    min-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a #252526;
+}
+
+.settings-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.settings-container::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+
+.settings-container::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.settings-container::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+.settings-container::-webkit-scrollbar-corner {
+    background: #252526;
+}
+
+.settings-header {
+    text-align: center;
+}
+
+.settings-header h1 {
+    font-size: 2.5rem;
+    color: #e8eaed;
+    font-weight: 300;
+}
+
+.toggle-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+}
+
+.toggle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: #252526;
+    border-radius: 12px;
+    border: 1px solid #3a3a3a;
+    transition: all 0.3s ease;
+}
+
+.toggle-label {
+    font-size: 1.1rem;
+    color: #e8eaed;
+    font-weight: 500;
+}
+
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: #252526;
+    border-radius: 12px;
+    border: 1px solid #3a3a3a;
+    transition: all 0.3s ease;
+}
+
+.dropdown-label {
+    font-size: 1.1rem;
+    color: #e8eaed;
+    font-weight: 500;
+}
+
+.dropdown-select {
+    position: relative;
+    cursor: not-allowed;
+}
+
+.dropdown-select select {
+    background: #1e1e1e;
+    color: #e8eaed;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 10px 35px 10px 15px;
+    font-size: 1rem;
+    min-width: 140px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    pointer-events: none;
+}
+
+.dropdown-select::after {
+    content: '▼';
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: #e8eaed;
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+.dropdown-select select option {
+    background: #1e1e1e;
+    color: #e8eaed;
+    padding: 8px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+

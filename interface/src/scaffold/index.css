@@ -1,0 +1,161 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Add this to prevent scrollbar */
+}
+
+#top-component {
+    flex: 0 0 auto;
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+#main-interface {
+    display: flex;
+    flex: 1;
+    min-height: 0; /* Ensure it can shrink */
+    overflow: hidden; /* Add this */
+}
+
+/* Ensure proper flex layout for the center-right row */
+.center-right-row {
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+    border: none; /* remove debug border */
+}
+
+#center-bottom-column {
+    display: grid;
+    grid-template-rows: 1fr auto; /* Top row gets remaining space, bottom row fits its content */
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+    border: none; /* remove debug border */
+}
+
+.sidebar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+#left-sidebar {
+    width: 150px;
+    overflow-y: auto;
+    background-color: #252526;
+    display: flex;
+    flex-direction: column;
+    transition: none;
+    border-right: 1px solid #3a3a3a;
+    flex: 0 0 150px; /* Fixed width */
+    min-width: 150px; /* Ensure minimum width */
+    max-width: 150px; /* Ensure maximum width */
+}
+
+#right-sidebar {
+    flex: 0 0 auto; /* Don't grow or shrink, use explicit width */
+    transition: width 0.1s ease-out;
+    width: 300px;
+    min-width: 0; /* Allow shrinking when hidden */
+    overflow: hidden;
+    position: relative;
+    background-color: #252526;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #3a3a3a;
+    max-height: 100%;
+}
+
+#left-sidebar.hidden {
+    flex: 0 0 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden !important;
+    border: none !important;
+}
+
+#right-sidebar.hidden {
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    flex: 0 0 0 !important; /* Force flex basis to 0 */
+    visibility: hidden;
+}
+
+#center-component {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #1e1e1e;
+    min-height: 0; /* Add this to allow content to shrink */
+}
+
+#bottom-component {
+    flex-shrink: 0; /* Ensure it doesn't shrink */
+    background-color: #252526;
+    border-top: 1px solid #3a3a3a;
+    width: 100%;
+    position: relative;
+    max-height: 96vh; /* Prevent it from exceeding 80% of viewport height */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.resizable {
+    position: relative;
+}
+
+.resize-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: ew-resize;
+}
+
+#right-sidebar .resize-handle {
+    left: 0;
+}
+
+body, #app, #main-interface, #left-sidebar, #right-sidebar {
+    cursor: default;
+}
+
+button, select, .menu-item, [role="button"] {
+    cursor: pointer;
+}
+
+.sidebar.resizing {
+    user-select: none;
+}

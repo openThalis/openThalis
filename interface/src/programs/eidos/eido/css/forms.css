@@ -1,0 +1,58 @@
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  color: #e8eaed;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  color: #e8eaed;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: #9aa0a6; }
+
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+.checkbox-group { display: flex; align-items: center; }
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0 !important;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto !important;
+  margin-right: 0 !important;
+  cursor: pointer;
+  order: 2;
+}
+
+.checkbox-label .checkmark { order: 1; }
+
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openThalis</title>
+    <link rel="stylesheet" href="/src/scaffold/components/top_bar/top_bar.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/tabs.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/tabHost.css">
+    <link rel="stylesheet" href="/src/scaffold/components/left_component/left_component.css">
+    <link rel="stylesheet" href="/src/scaffold/components/right_component/right_component.css">
+    <link rel="stylesheet" href="/src/scaffold/components/center_component/center_component.css">
+    <link rel="stylesheet" href="/src/scaffold/components/bottom_component/bottom_component.css">
+    <link rel="stylesheet" href="/src/scaffold/index.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/context_menu.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/globalLogin.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/userSelection.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/userDropdown.css">
+    <link rel="stylesheet" href="/src/scaffold/components/shared/css/confirmationModal.css">
+    
+</head>
+<body>
+    <!-- Global Login Overlay -->
+    <div id="global-login-overlay" class="global-login-overlay" style="display: none;">
+        <!-- User Selection View -->
+        <div id="user-selection-view" class="user-selection-overlay">
+            <div class="user-selection-container">
+                <div class="user-selection-header">
+                    <h1 class="user-selection-title">openThalis</h1>
+                </div>
+
+                <div class="user-selection-actions">
+                    <button id="user-selection-create-new" class="user-selection-button secondary">
+                        New instance
+                    </button>
+                </div>
+
+                <div id="user-selection-list" class="user-selection-list">
+                    <!-- User items will be dynamically added here -->
+                </div>
+
+                <div id="user-selection-loading" class="user-selection-loading">
+                    <div class="user-selection-spinner"></div>
+                    <span>Loading users...</span>
+                </div>
+
+                <div id="user-selection-error" class="user-selection-error"></div>
+            </div>
+        </div>
+
+        <!-- Login Form View -->
+        <div id="login-form-view" class="global-login-overlay" style="display: none;">
+            <button type="button" id="login-form-back" class="back-arrow-button">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1L1 8L8 15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="global-login-container">
+                <div class="global-login-header">
+                    <h1 class="global-login-title">New instance</h1>
+                </div>
+
+                <form id="global-login-form" class="global-login-form">
+                    <!-- Instance Configuration -->
+                    <div class="instance-config-section">
+                        <!-- Basic Instance Info -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">Instance name <span style="color: red;">*</span></h4>
+
+                            <div class="global-login-field">
+                                <input
+                                    type="text"
+                                    id="global-instance-input"
+                                    class="global-login-input"
+                                    required
+                                    placeholder="Enter instance name"
+                                >
+                            </div>
+                        </div>
+                        
+                        <!-- Session Settings -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">Session Settings</h4>
+                            
+                            <div class="global-login-field">
+                                <label for="instance-operator-name" class="global-login-label">Operator Name <span style="color: red;">*</span></label>
+                                <input
+                                    type="text"
+                                    id="instance-operator-name"
+                                    class="global-login-input"
+                                    required
+                                    placeholder="Enter operator name"
+                                >
+                            </div>
+
+                            <div class="global-login-field">
+                                <label for="instance-purpose" class="global-login-label">Purpose</label>
+                                <textarea
+                                    id="instance-purpose"
+                                    class="global-login-input instance-textarea"
+                                    placeholder="Enter purpose"
+                                    rows="2"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Provider Settings -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">Provider Settings</h4>
+                            
+                            <div class="global-login-field">
+                                <label for="instance-provider-name" class="global-login-label">Provider Name <span style="color: red;">*</span></label>
+                                <select
+                                    id="instance-provider-name"
+                                    class="global-login-input"
+                                    required
+                                >
+                                    <option value="">Select a provider</option>
+                                    <option value="ollama">ollama</option>
+                                    <option value="xai">xai</option>
+                                    <option value="openai">openai</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <small id="provider-api-keys-hint" class="field-hint">Add API keys for the provider in the next section like this: PROVIDERNAME_API_KEY</small>
+                            </div>
+
+                            <div class="global-login-field" id="custom-provider-field" style="display: none;">
+                                <label for="instance-custom-provider" class="global-login-label">Custom Provider Name</label>
+                                <input
+                                    type="text"
+                                    id="instance-custom-provider"
+                                    class="global-login-input"
+                                    placeholder="Enter custom provider name"
+                                >
+                            </div>
+
+                            <div class="global-login-field">
+                                <label for="instance-model-name" class="global-login-label">Model Name <span style="color: red;">*</span></label>
+                                <input
+                                    type="text"
+                                    id="instance-model-name"
+                                    class="global-login-input"
+                                    required
+                                    placeholder="Enter model name (e.g. grok-4 / gpt-4o / gpt-5)"
+                                >
+                            </div>
+
+                        </div>
+
+                        <!-- API Keys -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">API Keys</h4>
+                            <div id="instance-api-keys-container">
+                                <!-- API keys will be added dynamically -->
+                            </div>
+                            <button type="button" id="instance-add-api-key" class="add-key-button">+ Add API Key</button>
+                        </div>
+
+                        <!-- Agent Settings -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">Agent Settings</h4>
+                            
+                            <div class="global-login-field">
+                                <label for="instance-default-agent" class="global-login-label">Default Agent</label>
+                                <select id="instance-default-agent" class="global-login-input">
+                                    <option value="">Select default agent</option>
+                                </select>
+                            </div>
+
+                            <div class="agents-subsection">
+                                <h5 class="agents-subsection-title">Agents</h5>
+                                <div id="instance-agents-list">
+                                    <!-- Dynamic agent items will be added here -->
+                                </div>
+                                <button type="button" id="instance-add-agent" class="add-key-button">+ Add agent</button>
+                            </div>
+                        </div>
+
+                        <!-- Mode Settings -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">Mode Settings</h4>
+                            
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="instance-agents-mode">
+                                    <span class="checkmark"></span>
+                                    Agents Mode
+                                </label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="instance-awareness-mode">
+                                    <span class="checkmark"></span>
+                                    Awareness Mode
+                                </label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="instance-tools-mode">
+                                    <span class="checkmark"></span>
+                                    Tools Mode
+                                </label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="instance-local-mode">
+                                    <span class="checkmark"></span>
+                                    Local Mode
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Local Settings -->
+                        <div class="config-group">
+                            <h4 class="config-group-title">Local Settings</h4>
+                            
+                            <div class="global-login-field">
+                                <label for="instance-local-path" class="global-login-label">Local Path <span style="color: red;">*</span></label>
+                                <input
+                                    type="text"
+                                    id="instance-local-path"
+                                    class="global-login-input"
+                                    required
+                                    placeholder="C:\path\to\local"
+                                >
+                                <small class="field-hint">Path for the 'local' program where AI models get all text-based files as context</small>
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                    <div class="global-login-actions">
+                        <button type="submit" id="global-login-button" class="global-login-button">
+                            Create instance
+                        </button>
+                    </div>
+
+                    <div id="global-login-error" class="global-login-error"></div>
+
+                    <div id="global-login-loading" class="global-login-loading">
+                        <div class="global-login-spinner"></div>
+                        <span>Creating instance...</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div id="app">
+        <div id="top-component"></div>
+        <div id="main-interface">
+            <div id="left-sidebar" class="left-sidebar"></div>
+            <div id="center-bottom-column">
+                <div id="center-right-row" class="center-right-row">
+                    <div id="center-component" class="center-resizable"></div>
+                    <div id="right-sidebar" class="right-sidebar right-resizable hidden"></div>
+                </div>
+                <div id="bottom-component"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/config.js"></script>
+    <script src="/src/scaffold/components/shared/js/userDropdown.js"></script>
+    <script src="/src/scaffold/components/shared/js/confirmationModal.js"></script>
+    <script type="module" src="/src/scaffold/index.js"></script>
+</body>
+</html>

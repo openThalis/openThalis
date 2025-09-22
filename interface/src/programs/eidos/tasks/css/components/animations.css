@@ -1,0 +1,100 @@
+/* Animation Styles */
+
+/* Delete Response Button Confirmation State */
+.response-nav-btn.confirm-delete {
+    background-color: #f44336 !important;
+    color: white !important;
+    border-color: #f44336 !important;
+    transform: scale(1.1);
+    animation: confirmPulse 2s infinite;
+}
+
+.response-nav-btn.confirm-delete:hover {
+    background-color: #d32f2f !important;
+    border-color: #d32f2f !important;
+}
+
+@keyframes confirmPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Delete Response Button Loading State */
+.response-nav-btn.deleting-response {
+    background-color: #666 !important;
+    color: #ccc !important;
+    border-color: #666 !important;
+    cursor: not-allowed !important;
+    animation: loadingPulse 1.5s infinite;
+}
+
+@keyframes loadingPulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Live Update Indicators */
+.has-new-responses {
+    background-color: #4a4a4a !important;
+    border-color: #4caf50 !important;
+    animation: newResponsePulse 2s infinite;
+    min-width: auto !important;
+    width: auto !important;
+    gap: 3px !important;
+}
+
+.new-indicator {
+    color: #4caf50;
+    font-size: 0.65rem;
+    font-weight: bold;
+    margin-left: 0;
+    animation: fadeIn 0.3s ease-in;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+}
+
+.has-updates {
+    color: #4caf50 !important;
+    font-weight: bold;
+    animation: updatePulse 1.5s infinite;
+}
+
+@keyframes newResponsePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+    }
+}
+
+@keyframes updatePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

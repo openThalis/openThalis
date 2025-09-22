@@ -1,0 +1,82 @@
+.chats-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.chats-modal {
+  width: 92%;
+  max-width: 520px;
+  background: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+}
+
+.chats-modal .modal-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid #404040;
+}
+
+.chats-modal .modal-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chats-modal .modal-body {
+  padding: 16px 18px;
+}
+
+.chats-modal .modal-body p {
+  margin: 0 0 8px;
+  color: #cccccc;
+}
+
+.chats-modal .modal-error {
+  margin-top: 8px;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+}
+
+.chats-modal .modal-footer {
+  padding: 12px 18px 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.chats-modal-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #404040;
+  background: #3a3a3a;
+  color: #e0e0e0;
+  outline: none;
+}
+
+.chats-modal-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+}
+
+.chats-modal .btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #404040;
+  background: #3a3a3a;
+  color: #e0e0e0;
+  cursor: pointer;
+}
+
+.chats-modal .btn.btn-primary { background: #1e3a5f; color: #64b5f6; }
+.chats-modal .btn.btn-secondary { background: #4a4a4a; color: #e0e0e0; }
+
+

@@ -1,0 +1,110 @@
+.task-item {
+    display: flex;
+    align-items: stretch;
+    padding: 16px 20px;
+    background-color: #252526;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.task-item:hover {
+    border-color: #4a4a4a;
+    background-color: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.task-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.task-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.task-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e8eaed;
+    margin: 0;
+    text-align: left;
+}
+
+.task-schedule {
+    display: flex;
+    align-items: center;
+}
+
+.schedule-text {
+    font-size: 0.9rem;
+    color: #9aa0a6;
+    font-weight: 400;
+}
+
+.schedule-icon {
+    font-size: 1rem;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+    display: flex;
+    gap: 4px;
+}
+
+.task-schedule .schedule-icon {
+    gap: 4px;
+}
+
+.status-info .schedule-icon {
+    gap: 6px;
+}
+
+
+
+.icon-btn {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 2px;
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+}
+
+.task-status {
+    display: flex;
+    align-items: center;
+}
+
+.status-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.status-info .schedule-icon {
+    margin-bottom: 4px;
+}
+
+.last-run {
+    font-size: 0.85rem;
+    color: #9aa0a6;
+    white-space: nowrap;
+}
+
+
+
+.empty-state {
+    color: #9aa0a6;
+    font-style: italic;
+    text-align: center;
+    padding: 32px 16px;
+}

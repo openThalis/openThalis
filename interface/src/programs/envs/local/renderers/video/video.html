@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Video Player</title>
+    <link rel="stylesheet" href="/src/programs/envs/local/css/base.css" />
+    <style>
+      body { margin: 0; background:#0b0f16; display:flex; flex-direction:column; height:100vh; }
+      header { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; border-bottom:1px solid var(--border); }
+      main { flex:1; display:grid; place-items:center; overflow:auto; }
+      video { max-width: 100%; max-height: 100%; outline:none; }
+      .meta { color: var(--muted); font-size:12px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div id="title"></div>
+        <div id="meta" class="meta"></div>
+      </div>
+      <div>
+        <a id="download" class="btn btn-secondary" target="_blank" rel="noreferrer">Download</a>
+      </div>
+    </header>
+    <main>
+      <video id="vid" controls></video>
+    </main>
+    <script src="/config.js"></script>
+    <script type="module">
+      const params = new URLSearchParams(location.search);
+      const path = params.get('path') || '';
+      if (!window.__BACKEND_URL__) throw new Error('Backend URL is not configured');
+      const base = String(window.__BACKEND_URL__).replace(/\/$/, '');
+      const url = `${base}/api/raw?path=${encodeURIComponent(path)}`;
+      document.getElementById('vid').src = url;
+      document.getElementById('download').href = url;
+      const name = (path.split(/\\|\//).pop() || 'Video');
+      document.getElementById('title').textContent = name;
+      document.getElementById('meta').textContent = path;
+    </script>
+  </body>
+  </html>
+
+

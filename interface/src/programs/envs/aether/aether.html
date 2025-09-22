@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aether - Program Manager</title>
+    <link rel="stylesheet" href="/programs/envs/aether/aether.css">
+</head>
+<body>
+    <div class="aether-container">
+        <div class="aether-main">
+        <div class="aether-wrapper">
+                <div class="aether-header">
+                    <h1 class="aether-title">Aether</h1>
+                    <p class="aether-subtitle">Create and manage your sub-programs</p>
+                    <button id="createProgramBtn" class="create-program-btn">
+                        Create Program
+                    </button>
+                </div>
+                
+                <div class="programs-grid" id="programsGrid">
+                    <!-- Programs will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar for program creation/editing -->
+        <div class="aether-sidebar hidden" id="aetherSidebar">
+            <div class="sidebar-content">
+                <!-- Program Settings Panel -->
+                <div id="programSettings" class="sidebar-panel program-settings-panel hidden">
+                    <div class="panel-header">
+                        <div class="header-title-row">
+                            <h2 class="panel-title" id="programSettingsTitle">Create Program</h2>
+                            <button id="magicWandBtn" class="close-btn" title="Improve">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M13 3v7"/>
+                                    <path d="M5 11h7"/>
+                                    <path d="M13 21v-7"/>
+                                    <path d="M21 13h-7"/>
+                                    <circle cx="12" cy="12" r="2"/>
+                                    <circle cx="7" cy="7" r="1"/>
+                                    <circle cx="17" cy="7" r="1"/>
+                                    <circle cx="7" cy="17" r="1"/>
+                                    <circle cx="17" cy="17" r="1"/>
+                                    <circle cx="4" cy="12" r="1"/>
+                                    <circle cx="20" cy="12" r="1"/>
+                                    <circle cx="12" cy="4" r="1"/>
+                                    <circle cx="12" cy="20" r="1"/>
+                                </svg>
+                            </button>
+                            <button id="closeProgramSettings" class="close-btn" title="Close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="programSettingsError" class="program-settings-error hidden" role="alert" aria-live="polite"></div>
+                    
+                    <div class="panel-body">
+                        <div class="form-section">
+                            <label class="form-label" for="programName">Program Name</label>
+                            <input type="text" id="programName" placeholder="Enter program name" class="program-input" maxlength="255" required>
+                        </div>
+                        
+                        <div class="form-section">
+                            <label class="form-label" for="programDescription">Description</label>
+                            <textarea id="programDescription" class="program-textarea" placeholder="Enter program description" maxlength="1000" required></textarea>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-label-with-help">
+                                <label class="form-label">Source Code</label>
+                                <div class="form-controls">
+                                    <button class="help-icon" id="sourceCodeHelpBtn" aria-label="Learn about source code options">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                            <path d="M12 17h.01"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="toggle-btn" id="sourceCodeToggleBtn" aria-label="Toggle source code visibility" title="Show/Hide Source Code">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="6,9 12,15 18,9"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="source-code-nav collapsed">
+                                <button class="source-nav-btn active" data-tab="html">HTML</button>
+                                <button class="source-nav-btn" data-tab="css">CSS</button>
+                                <button class="source-nav-btn" data-tab="js">JavaScript</button>
+                            </div>
+                            <div class="source-code-content collapsed">
+                                <div class="source-tab-content active" data-tab="html">
+                                    <textarea id="html-code" class="source-code-editor" placeholder="Enter your HTML code here..."></textarea>
+                                </div>
+                                <div class="source-tab-content" data-tab="css">
+                                    <textarea id="css-code" class="source-code-editor" placeholder="Enter your CSS code here..."></textarea>
+                                </div>
+                                <div class="source-tab-content" data-tab="js">
+                                    <textarea id="js-code" class="source-code-editor" placeholder="Enter your JavaScript code here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="panel-footer">
+                        <div class="panel-footer-actions">
+                            <button id="cloneProgramBtn" class="clone-program-btn">
+                                <span class="btn-text">Clone</span>
+                            </button>
+                            <button id="deleteProgramBtn" class="delete-program-btn">
+                                <span class="btn-text">Delete</span>
+                            </button>
+                            <button id="saveProgramBtn" class="save-program-btn">
+                                <span class="btn-text">Create</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+            
+    <!-- Delete confirmation modal -->
+    <div id="deleteProgramModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete</h3>
+                <button id="closeDeleteModal" class="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this program?</p>
+                <div class="program-name-display" id="deleteConfirmName"></div>
+                <p class="delete-warning">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelDeleteBtn" class="cancel-btn">Cancel</button>
+                <button id="confirmDeleteBtn" class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module">
+// Reminder: Aether is initialized in two paths:
+// - Inline here when `aether.html` loads directly (e.g., after clicking Edit in the renderer)
+// - From `left_component/js/events.js` when the HTML is injected into a tab (inline scripts won't run there)
+// Keep both; they are complementary and won't double-initialize.
+import { initializeAetherApp } from '/src/programs/envs/aether/aether.js';
+initializeAetherApp();
+</script>
+</html>

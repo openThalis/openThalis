@@ -1,0 +1,23 @@
+.chats-component .main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.chats-component .conversation-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    min-width: 0;
+}
+
+.chats-component .chat-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+    min-width: 0;
+} 

@@ -1,0 +1,42 @@
+.config-form {
+  background-color: #252526;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a3a #252526;
+  position: relative;
+}
+
+.config-form::-webkit-scrollbar { width: 8px; }
+.config-form::-webkit-scrollbar-track { background: #1e1e1e; border-radius: 4px; }
+.config-form::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 4px; transition: background-color 0.2s; }
+.config-form::-webkit-scrollbar-thumb:hover { background: #4a4a4a; }
+.config-form::-webkit-scrollbar-corner { background: #252526; }
+
+.form-section { margin-bottom: 32px; }
+.form-section:last-of-type { margin-bottom: 24px; }
+
+.section-title {
+  font-size: 1.4rem;
+  color: #e8eaed;
+  margin-bottom: 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #3a3a3a;
+  padding-bottom: 8px;
+}
+
+.subsection-title {
+  font-size: 1.2rem;
+  color: #e8eaed;
+  margin-bottom: 12px;
+  margin-top: 16px;
+  font-weight: 400;
+}
+
+.agents-section { margin-top: 16px; }
+
+

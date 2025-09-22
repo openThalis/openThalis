@@ -1,0 +1,13 @@
+[package]
+name = "openThalis"
+version = "0.4.6"
+edition = "2024"
+
+[dependencies]
+wry = "0.52.1"
+tao = "0.34"
+image = { version = "0.25.6", default-features = false, features = ["png"] }
+tokio = { version = "1", features = ["rt-multi-thread", "net"] }
+dotenv = "0.15"
+tower-http = { version = "0.6.6", features = ["fs", "cors"] }
+axum = "0.8.4"

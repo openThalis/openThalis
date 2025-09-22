@@ -1,0 +1,253 @@
+/* Create Program Button */
+.create-program-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: #4a4a4a;
+    color: #e8eaed;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-top: 8px;
+}
+
+.create-program-btn:hover {
+    background-color: #5a5a5a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.create-program-btn:active {
+    transform: translateY(0);
+}
+
+/* Programs Grid */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 0;
+}
+
+.program-card {
+    background-color: #252526;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.program-card:hover {
+    border-color: #4a4a4a;
+    background-color: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.program-card:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading State Styles */
+.program-card.updating {
+    position: relative;
+    cursor: not-allowed;
+}
+
+.program-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 12px;
+}
+
+.loading-spinner {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top: 3px solid #4a90e2;
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinner-ring:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.spinner-ring:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.spinner-ring:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+.spinner-ring:nth-child(4) {
+    animation-delay: 0s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    margin-top: 12px;
+    color: #e8eaed;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Disabled button styles */
+.program-edit-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.program-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.program-card-indicators {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+.program-card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #e8eaed;
+    margin: 0 0 8px 0;
+    word-break: break-word;
+    line-height: 1.3;
+    flex: 1;
+}
+
+.program-edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    color: #9aa0a6;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.program-edit-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+    color: #e8eaed;
+}
+
+
+
+.program-card-body {
+    flex: 1;
+    margin-bottom: 16px;
+}
+
+.program-card-description {
+    font-size: 0.9rem;
+    color: #9aa0a6;
+    line-height: 1.4;
+    word-break: break-word;
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+}
+
+.program-card-date {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-style: italic;
+    margin: 0;
+}
+
+
+
+
+
+/* Close Button */
+.close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #3a3a3a;
+    background-color: transparent;
+    color: #e8eaed;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+}
+
+/* Responsive design for components */
+@media (max-width: 768px) {
+    .programs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .program-card {
+        padding: 16px;
+        min-height: 160px;
+    }
+    
+    .program-card-title {
+        font-size: 1.1rem;
+    }
+}
