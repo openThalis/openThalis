@@ -29,7 +29,7 @@ openThalis is built with in mind to be a plug and play application, so you can u
 
 ## Setup
 
-0. Clone the repository and ensure you have [python](https://www.python.org/downloads/) and [rust](https://www.rust-lang.org/tools/install) ¬ additionally if you want to use local models install [ollama](https://ollama.ai/install) and download the [models](https://ollama.ai/models)
+0. Clone the repository and ensure you have [python](https://www.python.org/downloads/) and [rust](https://www.rust-lang.org/tools/install) ¬ additionally if you want to use local models install [ollama](https://ollama.ai/download) and download the [models](https://ollama.ai/models)
 1. Rename template.env to .env and place 2 exact copies, one in engine and one in interface (you can keep the default values or change them if you want)
 2. Install the python requirements:
 ```bash

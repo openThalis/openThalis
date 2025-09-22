@@ -6,6 +6,9 @@ target/
 .else/
 .tbi/
 .cursorignore
+.part_1.txt
+.part_2.txt
+.part_3.txt
 
 # Python
 __pycache__/
