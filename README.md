@@ -29,27 +29,33 @@ openThalis is built with in mind to be a plug and play application, so you can u
 
 ## Setup
 
-0. Clone the repository and ensure you have [python](https://www.python.org/downloads/) and [rust](https://www.rust-lang.org/tools/install) ¬ additionally if you want to use local models install [ollama](https://ollama.ai/download) and download the [models](https://ollama.ai/models)
-1. Rename template.env to .env and place 2 exact copies, one in engine and one in interface (you can keep the default values or change them if you want)
+0. Clone the repository and ensure you have [python](https://www.python.org/downloads/) and [rust](https://www.rust-lang.org/tools/install) ¬ additionally if you want to use local models you need to install [ollama](https://ollama.ai/download) and download the [models](https://ollama.ai/models)
+1. Get inside the folder repository and rename template.env to .env and place 2 exact copies, one in engine and one in interface:
+```bash
+cp template.env .env
+cp template.env engine/.env
+cp template.env interface/.env
+```
 2. Install the python requirements:
 ```bash
 pip install -r REQUIREMENTS.txt
 ```
-3. Start the engine:
+3. Open a new terminal, get inside the folder repository and start the engine:
 ```bash
 cd engine
 python start_engine.py
 ```
-4. Start the interface:
+4. Open a new terminal, get inside the folder repository and start the interface:
 ```bash
 cd interface
-cargo clean
 cargo run
 ```
-5. Create a new instance (like how it is shown in the video introduction) and enjoy!
+5. Wait for the application to be built and launched then you can create a new instance and enjoy!
+
+P.S Next time you want to start the application you can just do step 3 & 4
 
 ## Docs
-For more information, visit the [docs](https://openthalis.ai/docs); There you will find the documentation for the application, how to install it, and how to add custom commands, models and tools
+You can find the documentation at [docs](https://openthalis.ai/docs)
 
 ## Follow us on X
 
