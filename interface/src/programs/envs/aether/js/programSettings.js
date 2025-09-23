@@ -43,7 +43,7 @@ export class FeedbackModal {
                 </div>
                 <div class="feedback-modal-footer">
                     <button class="feedback-cancel-btn">Cancel</button>
-                    <button class="feedback-send-btn">Send Request</button>
+                    <button class="feedback-send-btn">Send feedback</button>
                 </div>
             </div>
         `;
@@ -125,11 +125,12 @@ export class FeedbackModal {
             this.elements.sendBtn.disabled = true;
             this.elements.sendBtn.textContent = 'Sending...';
 
-            // Send feedback to backend
-            const formData = {
-                feedback: feedback,
-                status: 'update'
-            };
+            // Get all form data including any changes to name and description
+            const formData = this.programSettings.getFormData();
+            
+            // Add the feedback and ensure status is 'update'
+            formData.feedback = feedback;
+            formData.status = 'update';
 
             const event = new CustomEvent('programUpdateFeedback', {
                 detail: {
@@ -152,7 +153,7 @@ export class FeedbackModal {
             // Reset button state
             if (this.elements.sendBtn) {
                 this.elements.sendBtn.disabled = false;
-                this.elements.sendBtn.textContent = 'Send Request';
+                this.elements.sendBtn.textContent = 'Send feedback';
             }
         }
     }

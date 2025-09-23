@@ -25,7 +25,7 @@ class thalisAPI():
                 email=self.email
             )
             
-            print(f"\n\n### Started eido processing thread {thread_id} for agent: {agent_name}")
+            print(f"\n\n### Eido processing thread {thread_id} for agent: {agent_name}")
 
         except Exception as e:
             print(f"Error starting eido thread: {str(e)}")
@@ -67,6 +67,7 @@ class thalisAPI():
 
         else:
             await self._start_eido_thread(target_agent, conversation_id)
+            
             return {}
          
     ####################################################
