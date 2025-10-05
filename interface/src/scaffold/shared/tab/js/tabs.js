@@ -1,5 +1,5 @@
-import { sharedState } from '/src/scaffold/components/shared/js/state.js';
-import { createTabContextMenu } from '/src/scaffold/components/shared/js/contextMenu.js';
+import { sharedState } from './state.js';
+import { createTabContextMenu } from './contextMenu.js';
 
 export class TabManager {
     constructor(config) {

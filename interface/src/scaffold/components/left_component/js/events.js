@@ -1,5 +1,5 @@
-import { sharedState } from '/src/scaffold/components/shared/js/state.js';
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
+import { sharedState } from '/src/scaffold/shared/tab/js/state.js';
+import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
 
 export function setupEventListeners() {
     const menuItems = document.querySelectorAll('.menu-item');

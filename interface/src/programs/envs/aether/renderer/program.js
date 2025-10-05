@@ -42,7 +42,7 @@ async function fetchJsonAuth(endpoint) {
   // Try to use scaffold httpClient if available
   try {
     if (window.top && window.top !== window) {
-      const mod = await import('/src/scaffold/components/shared/js/httpClient.js');
+      const mod = await import('/src/scaffold/shared/utils/http/httpClient.js');
       const httpClient = mod.default;
       const res = await httpClient.api(endpoint, { method: 'GET', credentials: 'include' });
       const data = await res.json();

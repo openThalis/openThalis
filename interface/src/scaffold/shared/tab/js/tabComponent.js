@@ -1,6 +1,6 @@
-import { createComponentState } from '/src/scaffold/components/shared/js/state.js';
-import { TabManager } from '/src/scaffold/components/shared/js/tabs.js';
-import { DragDropManager } from '/src/scaffold/components/shared/js/dragDrop.js';
+import { createComponentState } from './state.js';
+import { TabManager } from './tabs.js';
+import { DragDropManager } from './dragDrop.js';
 
 export async function initTabComponent({
     rootId,                 // 'center-component' | 'right-sidebar'

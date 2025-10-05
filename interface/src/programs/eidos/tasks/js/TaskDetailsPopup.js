@@ -263,7 +263,7 @@ export class TaskDetailsPopup {
                 newTitle = `Chats (${counter++})`;
             }
             try {
-                const stateMod = await import('/src/scaffold/components/shared/js/state.js');
+                const stateMod = await import('/src/scaffold/shared/tab/js/state.js');
                 try { stateMod.sharedState.usedTabNames.delete(activeTab.name); } catch {}
                 activeTab.name = newTitle;
                 try { stateMod.sharedState.usedTabNames.add(newTitle); } catch {}
@@ -280,7 +280,7 @@ export class TaskDetailsPopup {
             const instanceId = chatsModule.initializeChats(chatsRoot || activeTab.contentElement);
 
             // Create a new conversation and seed with two messages
-            const { default: httpClient } = await import('/src/scaffold/components/shared/js/httpClient.js');
+            const { default: httpClient } = await import('/src/scaffold/shared/utils/http/httpClient.js');
             const createResp = await httpClient.apiPost('/conversations');
             if (!createResp.ok) throw new Error('Failed to create conversation');
             const createData = await createResp.json();

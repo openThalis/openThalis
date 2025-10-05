@@ -14,6 +14,7 @@ async def fetch_api_key_for_provider(provider: str, email: Optional[str] = None)
         "openai": "OPENAI_API_KEY",
         "xai": "XAI_API_KEY",
         "perplexity": "PERPLEXITY_API_KEY",
+        "anthropic": "ANTHROPIC_API_KEY",
     }
 
     key_name = provider_to_key.get(provider.lower())

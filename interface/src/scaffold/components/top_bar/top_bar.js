@@ -1,4 +1,4 @@
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
+import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
 
 export function initializeTopComponent() {
     const topComponent = document.getElementById('top-component');

@@ -1,4 +1,4 @@
-import { sharedState } from '/src/scaffold/components/shared/js/state.js';
+import { sharedState } from './state.js';
 
 export function createTabContextMenu(tab, component) {
     const menu = document.createElement('div');

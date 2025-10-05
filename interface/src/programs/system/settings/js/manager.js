@@ -1,4 +1,4 @@
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
+import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
 import { testHttpClientConfig, fetchSettings, updateSettings, resetAllSettings, deleteSettingItem } from './api.js';
 import { showError as showErrorUi, showSuccess as showSuccessUi } from './ui.js';
 import { ensureActionButtons as ensureActionButtonsDom, appendDynamicItem as appendDynamicItemDom } from './dom.js';

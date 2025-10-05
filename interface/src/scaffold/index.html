@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>openThalis</title>
     <link rel="stylesheet" href="/src/scaffold/components/top_bar/top_bar.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/tabs.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/tabHost.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/tab/css/tabs.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/tab/css/tabHost.css">
     <link rel="stylesheet" href="/src/scaffold/components/left_component/left_component.css">
     <link rel="stylesheet" href="/src/scaffold/components/right_component/right_component.css">
     <link rel="stylesheet" href="/src/scaffold/components/center_component/center_component.css">
     <link rel="stylesheet" href="/src/scaffold/components/bottom_component/bottom_component.css">
     <link rel="stylesheet" href="/src/scaffold/index.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/context_menu.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/globalLogin.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/userSelection.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/userDropdown.css">
-    <link rel="stylesheet" href="/src/scaffold/components/shared/css/confirmationModal.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/tab/css/context_menu.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/instance/css/globalLogin.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/instance/css/userSelection.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/instance/css/userDropdown.css">
+    <link rel="stylesheet" href="/src/scaffold/shared/instance/css/confirmationModal.css">
     
 </head>
 <body>
@@ -116,9 +116,10 @@
                                     required
                                 >
                                     <option value="">Select a provider</option>
+                                    <option value="anthropic">anthropic</option>
                                     <option value="ollama">ollama</option>
-                                    <option value="xai">xai</option>
                                     <option value="openai">openai</option>
+                                    <option value="xai">xai</option>
                                     <option value="other">Other</option>
                                 </select>
                                 <small id="provider-api-keys-hint" class="field-hint">Add API keys for the provider in the next section like this: PROVIDERNAME_API_KEY</small>
@@ -263,8 +264,8 @@
         </div>
     </div>
     <script src="/config.js"></script>
-    <script src="/src/scaffold/components/shared/js/userDropdown.js"></script>
-    <script src="/src/scaffold/components/shared/js/confirmationModal.js"></script>
+    <script src="/src/scaffold/shared/instance/js/userDropdown.js"></script>
+    <script src="/src/scaffold/shared/instance/js/confirmationModal.js"></script>
     <script type="module" src="/src/scaffold/index.js"></script>
 </body>
 </html>

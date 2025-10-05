@@ -10,6 +10,7 @@ from src.eido.utils.eido_config import fetch_provider_name
 from src.eido.models.xai.xai_main import xai_main_class
 from src.eido.models.openai.openai_main import openai_main_class
 from src.eido.models.ollama.ollama_main import ollama_main_class
+from src.eido.models.anthropic.anthropic_main import anthropic_main_class
 
 
 from src.disk.pythonDB.services.chats import crud as chat_crud
@@ -149,7 +150,7 @@ class eido:
                         except Exception as e:
                             print(f"\n\n[WARNING]: Error deleting internal message {msg_id}: {e}")
             
-                
+            
         except Exception as e:
             print(f"\n\n[ERROR]: Error during internal messages cleanup: {e}")
         
@@ -228,7 +229,8 @@ class eido:
         provider_map = {
             "openai": openai_main_class,
             "ollama": ollama_main_class,
-            "xai": xai_main_class
+            "xai": xai_main_class,
+            "anthropic": anthropic_main_class
         }
 
         if provider_name not in provider_map:

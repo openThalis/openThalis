@@ -36,7 +36,7 @@ export function populateForm({ keyMapping, getElementById, dynamicAgentItemClass
     const providerName = settings[keyMapping['providerName']];
 
     // Check if the provider name matches any of the predefined options
-    const predefinedOptions = ['ollama', 'xai', 'openai'];
+    const predefinedOptions = ['anthropic', 'ollama', 'openai', 'xai'];
     if (providerName && !predefinedOptions.includes(providerName)) {
       // This is a custom provider name, so select "other" and populate the custom input
       providerSelect.value = 'other';

@@ -1,4 +1,4 @@
-import httpClient from '/src/scaffold/components/shared/js/httpClient.js';
+import httpClient from '/src/scaffold/shared/utils/http/httpClient.js';
 
 export async function listTasks() {
     const res = await httpClient.apiGet('/tasks');

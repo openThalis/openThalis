@@ -1,4 +1,4 @@
-import { initTabComponent } from '/src/scaffold/components/shared/js/tabComponent.js';
+import { initTabComponent } from '/src/scaffold/shared/tab/js/tabComponent.js';
 
 function setupResizing(rightSidebar) {
     const resizeHandle = rightSidebar.querySelector('.resize-handle');

@@ -1,4 +1,4 @@
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
+import globalAuth from './globalAuth.js';
 
 class UserSelection {
     constructor() {
@@ -74,8 +74,8 @@ class UserSelection {
             this.customProviderInput.value = '';
         }
 
-        // Only show hint for providers that require API keys (xai, openai, other)
-        if (selectedProvider === 'xai' || selectedProvider === 'openai' || selectedProvider === 'other') {
+        // Only show hint for providers that require API keys (anthropic, xai, openai, other)
+        if (selectedProvider === 'anthropic' || selectedProvider === 'xai' || selectedProvider === 'openai' || selectedProvider === 'other') {
             this.providerHint.style.display = 'block';
         } else {
             this.providerHint.style.display = 'none';
@@ -939,8 +939,8 @@ class UserSelection {
 
     cleanupDuplicateScripts() {
         const scriptPaths = [
-            '/src/scaffold/components/shared/js/userDropdown.js',
-            '/src/scaffold/components/shared/js/confirmationModal.js'
+            '/src/scaffold/shared/instance/js/userDropdown.js',
+            '/src/scaffold/shared/instance/js/confirmationModal.js'
         ];
         
         scriptPaths.forEach(scriptPath => {

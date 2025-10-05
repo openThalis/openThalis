@@ -1,4 +1,4 @@
-import { sharedState } from '/src/scaffold/components/shared/js/state.js';
+import { sharedState } from './state.js';
 
 export class DragDropManager {
     constructor({ state, container, component, tabManager }) {

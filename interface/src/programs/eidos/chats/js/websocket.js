@@ -1,4 +1,4 @@
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
+import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
 
 // Manage a separate WebSocket per Chats instance
 const socketByInstance = new Map(); // instanceId -> WebSocket

@@ -4,9 +4,9 @@ import { initializeCenterComponent } from '/src/scaffold/components/center_compo
 import { initializeLeftSidebar } from '/src/scaffold/components/left_component/left_component.js';
 import { initializeRightSidebar } from '/src/scaffold/components/right_component/right_component.js';
 import { initializeBottomComponent } from '/src/scaffold/components/bottom_component/bottom_component.js';
-import { sharedState } from '/src/scaffold/components/shared/js/state.js';
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
-import UserSelection from '/src/scaffold/components/shared/js/userSelection.js';
+import { sharedState } from '/src/scaffold/shared/tab/js/state.js';
+import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
+import UserSelection from '/src/scaffold/shared/instance/js/userSelection.js';
 
 // Global authentication and initialization
 let isScaffoldInitialized = false;

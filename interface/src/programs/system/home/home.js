@@ -70,7 +70,7 @@ export function initializeHome(rootElement) {
             newTitle = `Chats (${counter++})`;
         }
         try {
-            const stateMod = await import('/src/scaffold/components/shared/js/state.js');
+            const stateMod = await import('/src/scaffold/shared/tab/js/state.js');
             try { stateMod.sharedState.usedTabNames.delete(activeTab.name); } catch {}
             activeTab.name = newTitle;
             try { stateMod.sharedState.usedTabNames.add(newTitle); } catch {}

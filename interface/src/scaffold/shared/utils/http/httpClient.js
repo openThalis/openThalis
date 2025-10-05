@@ -1,4 +1,4 @@
-import globalAuth from './globalAuth.js';
+import globalAuth from '../../instance/js/globalAuth.js';
 
 class HttpClient {
     constructor() {

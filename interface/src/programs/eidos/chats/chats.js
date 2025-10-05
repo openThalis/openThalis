@@ -3,7 +3,7 @@ import { appendMessage, setCurrentConversationId, getCurrentConversationId, upda
 import { loadConversations, loadConversation, startNewChat, updateConversationTitle, forkConversation, deleteConversation } from '/src/programs/eidos/chats/components/left_bar/left_bar.js';
 import { showError, setupMessageInput } from '/src/programs/eidos/chats/js/utils.js';
 import { openConfirmModal, openPromptModal } from '/src/programs/eidos/chats/js/modals.js';
-import globalAuth from '/src/scaffold/components/shared/js/globalAuth.js';
+import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
 
 // Per-instance registry
 const instanceRegistry = new Map(); // instanceId -> { root }
