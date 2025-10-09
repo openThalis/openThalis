@@ -1,24 +1,23 @@
 # Web Framework and Server
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
+requests
+fastapi
+uvicorn[standard]
 
 # Environment and Configuration
-pydantic>=2.5.0
-pydantic-settings>=2.0.0
-python-dotenv>=0.15.0
-python-multipart>=0.0.6
+pydantic
+pydantic-settings
+python-dotenv
+python-multipart
 
 # Database
-sqlalchemy>=2.0.0
-aiosqlite>=0.19.0
+sqlalchemy
+aiosqlite
 
 # Authentication and Security
-pyjwt>=2.8.0
+pyjwt
 
 # AI/ML Libraries
-openai>=1.0.0
-ollama>=0.2.0
-
-# HTTP Requests and File Handling
-requests>=2.31.0
+anthropic
+openai
+ollama
 

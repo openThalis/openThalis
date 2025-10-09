@@ -49,7 +49,7 @@ python start_engine.py
 cd interface
 cargo run
 ```
-5. Wait for the application to be built and launched then you can create a new instance and enjoy!
+5. Wait for the application to be built and launched then you can create a [new instance](https://openthalis.ai/demos#instance) and enjoy!
 
 P.S Next time you want to start the application you can just do step 3 & 4
 
