@@ -1,6 +1,6 @@
 import { getCurrentConversationId, setCurrentConversationId, appendMessage } from '../conversation/conversation.js';
 import { showError } from '/src/programs/eidos/chats/js/utils.js';
-import httpClient from '/src/scaffold/shared/utils/http/httpClient.js';
+import httpClient from '/src/scaffold/shared/http/httpClient.js';
 
 // Core conversation list functions
 export async function loadConversations(root, instanceId) {

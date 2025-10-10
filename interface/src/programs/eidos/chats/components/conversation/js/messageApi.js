@@ -2,7 +2,7 @@ import { sendWebSocketMessage } from '/src/programs/eidos/chats/js/websocket.js'
 import { getCurrentConversationId, setCurrentConversationId, clearCurrentConversationId } from './conversationState.js';
 import { appendMessage } from './messageUI.js';
 import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
-import httpClient from '/src/scaffold/shared/utils/http/httpClient.js';
+import httpClient from '/src/scaffold/shared/http/httpClient.js';
 
 // Message CRUD operations
 export async function updateMessageContent(messageId, content, instanceId) {

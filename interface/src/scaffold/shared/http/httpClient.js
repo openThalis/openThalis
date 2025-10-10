@@ -1,4 +1,5 @@
-import globalAuth from '../../instance/js/globalAuth.js';
+import globalAuth from '../instance/js/globalAuth.js';
+import config from '../config/config.js';
 
 class HttpClient {
     constructor() {
@@ -6,63 +7,12 @@ class HttpClient {
         this.apiBaseUrl = null;
     }
 
-    async loadConfigJs() {
-        return new Promise((resolve) => {
-            try {
-                const existing = document.querySelector('script[data-thalis-config]');
-                if (existing) {
-                    existing.addEventListener('load', () => resolve());
-                    existing.addEventListener('error', () => resolve());
-                    return;
-                }
-                const script = document.createElement('script');
-                script.src = '/config.js';
-                script.async = true;
-                script.setAttribute('data-thalis-config', 'true');
-                script.onload = () => resolve();
-                script.onerror = () => resolve();
-                document.head.appendChild(script);
-            } catch {
-                resolve();
-            }
-        });
-    }
-
     async initialize() {
         if (this.isInitialized) return;
         
         try {
-            if (window.__BACKEND_URL__) {
-                this.apiBaseUrl = window.__BACKEND_URL__;
-                this.isInitialized = true;
-                return;
-            }
-
-            await this.loadConfigJs();
-            if (window.__BACKEND_URL__) {
-                this.apiBaseUrl = window.__BACKEND_URL__;
-                this.isInitialized = true;
-                return;
-            }
-
-            try {
-                const response = await fetch('/api/config');
-                if (response.ok) {
-                    const ct = response.headers.get('content-type') || '';
-                    if (!ct.includes('application/json')) {
-                        throw new Error('Non-JSON response');
-                    }
-                    const config = await response.json();
-                    if (config.backend_url) {
-                        this.apiBaseUrl = config.backend_url;
-                        this.isInitialized = true;
-                        return;
-                    }
-                }
-            } catch (configError) {
-            }
-
-            throw new Error('Backend URL is not configured');
+            this.apiBaseUrl = await config.getBackendUrl();
+            this.isInitialized = true;
         } catch (error) {
             console.error('Failed to initialize HTTP client:', error);
             throw error;
@@ -74,11 +24,7 @@ class HttpClient {
 
         await globalAuth.initialize();
 
-        let baseUrl = this.apiBaseUrl;
-        if (baseUrl.endsWith('/') && url.startsWith('/')) {
-            baseUrl = baseUrl.slice(0, -1);
-        }
-        const fullUrl = url.startsWith('/') ? `${baseUrl}${url}` : url;
+        const fullUrl = config.buildFullUrl(this.apiBaseUrl, url);
 
         const headers = {
             'Content-Type': 'application/json',
@@ -165,3 +111,4 @@ class HttpClient {
 
 const httpClient = new HttpClient();
 export default httpClient; 
+

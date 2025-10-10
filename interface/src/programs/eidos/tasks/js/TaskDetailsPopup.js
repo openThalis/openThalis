@@ -280,7 +280,7 @@ export class TaskDetailsPopup {
             const instanceId = chatsModule.initializeChats(chatsRoot || activeTab.contentElement);
 
             // Create a new conversation and seed with two messages
-            const { default: httpClient } = await import('/src/scaffold/shared/utils/http/httpClient.js');
+            const { default: httpClient } = await import('/src/scaffold/shared/http/httpClient.js');
             const createResp = await httpClient.apiPost('/conversations');
             if (!createResp.ok) throw new Error('Failed to create conversation');
             const createData = await createResp.json();

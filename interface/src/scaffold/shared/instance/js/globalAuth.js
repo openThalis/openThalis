@@ -1,3 +1,5 @@
+import config from '../../config/config.js';
+
 class GlobalAuth {
     constructor() {
         this.accessToken = null;
@@ -51,59 +53,12 @@ class GlobalAuth {
         }
     }
 
-    async loadConfigJs() {
-        return new Promise((resolve) => {
-            try {
-                const existing = document.querySelector('script[data-thalis-config]');
-                if (existing) {
-                    existing.addEventListener('load', () => resolve());
-                    existing.addEventListener('error', () => resolve());
-                    return;
-                }
-                const script = document.createElement('script');
-                script.src = '/config.js';
-                script.async = true;
-                script.setAttribute('data-thalis-config', 'true');
-                script.onload = () => resolve();
-                script.onerror = () => resolve();
-                document.head.appendChild(script);
-            } catch {
-                resolve();
-            }
-        });
-    }
-
     async initialize() {
         if (this.isInitialized) return;
         
         try {
-            if (window.__BACKEND_URL__) {
-                this.apiBaseUrl = window.__BACKEND_URL__;
-                this.isInitialized = true;
-                return;
-            }
-
-            await this.loadConfigJs();
-            if (window.__BACKEND_URL__) {
-                this.apiBaseUrl = window.__BACKEND_URL__;
-                this.isInitialized = true;
-                return;
-            }
-
-            try {
-                const response = await fetch('/api/config');
-                if (response.ok) {
-                    const config = await response.json();
-                    if (config.backend_url) {
-                        this.apiBaseUrl = config.backend_url;
-                        this.isInitialized = true;
-                        return;
-                    }
-                }
-            } catch (configError) {
-            }
-
-            throw new Error('Backend URL is not configured');
+            this.apiBaseUrl = await config.getBackendUrl();
+            this.isInitialized = true;
         } catch (error) {
             console.error('Failed to initialize global auth:', error);
             throw error;
@@ -122,12 +77,9 @@ class GlobalAuth {
         }
 
         try {
-            let baseUrl = this.apiBaseUrl;
-            if (baseUrl.endsWith('/')) {
-                baseUrl = baseUrl.slice(0, -1);
-            }
+            const fullUrl = config.buildFullUrl(this.apiBaseUrl, '/api/auth/verify');
 
-            const response = await fetch(`${baseUrl}/api/auth/verify`, {
+            const response = await fetch(fullUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -156,12 +108,9 @@ class GlobalAuth {
         await this.initialize();
         
         try {
-            let baseUrl = this.apiBaseUrl;
-            if (baseUrl.endsWith('/')) {
-                baseUrl = baseUrl.slice(0, -1);
-            }
+            const fullUrl = config.buildFullUrl(this.apiBaseUrl, '/api/auth/login');
 
-            const response = await fetch(`${baseUrl}/api/auth/login`, {
+            const response = await fetch(fullUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -197,12 +146,9 @@ class GlobalAuth {
         await this.initialize();
         
         try {
-            let baseUrl = this.apiBaseUrl;
-            if (baseUrl.endsWith('/')) {
-                baseUrl = baseUrl.slice(0, -1);
-            }
+            const fullUrl = config.buildFullUrl(this.apiBaseUrl, '/api/auth/register');
 
-            const response = await fetch(`${baseUrl}/api/auth/register`, {
+            const response = await fetch(fullUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -239,12 +185,9 @@ class GlobalAuth {
         }
 
         if (this.accessToken && this.apiBaseUrl) {
-            let baseUrl = this.apiBaseUrl;
-            if (baseUrl.endsWith('/')) {
-                baseUrl = baseUrl.slice(0, -1);
-            }
+            const fullUrl = config.buildFullUrl(this.apiBaseUrl, '/api/auth/logout');
 
-            fetch(`${baseUrl}/api/auth/logout`, {
+            fetch(fullUrl, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${this.accessToken}`
@@ -285,16 +228,7 @@ class GlobalAuth {
             throw new Error('No access token available');
         }
 
-        let fullUrl;
-        if (url.startsWith('/')) {
-            let baseUrl = this.apiBaseUrl;
-            if (baseUrl.endsWith('/')) {
-                baseUrl = baseUrl.slice(0, -1);
-            }
-            fullUrl = `${baseUrl}${url}`;
-        } else {
-            fullUrl = url;
-        }
+        const fullUrl = config.buildFullUrl(this.apiBaseUrl, url);
 
         const headers = {
             'Authorization': `Bearer ${this.accessToken}`,

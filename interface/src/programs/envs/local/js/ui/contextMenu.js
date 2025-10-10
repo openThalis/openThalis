@@ -44,11 +44,10 @@ function copyToClipboardFallback(text) {
 }
 
 
+import config from '/src/scaffold/shared/config/config.js';
+
 function getBackendBaseUrl() {
-  if (typeof window !== 'undefined' && window.__BACKEND_URL__) {
-    return String(window.__BACKEND_URL__).replace(/\/$/, '');
-  }
-  throw new Error('Backend URL is not configured');
+  return config.getBackendUrlSync();
 }
 
 export function attachContextMenuHandlers({ copyBtn, cutBtn, pasteBtn, commandRenameBtn, commandDeleteBtn, showAlert, fetchProperties, showToast }) {

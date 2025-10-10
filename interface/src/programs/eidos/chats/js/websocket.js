@@ -1,33 +1,10 @@
 import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
+import { getWebSocketUrl } from '/src/scaffold/shared/config/websocket.js';
 
-// Manage a separate WebSocket per Chats instance
-const socketByInstance = new Map(); // instanceId -> WebSocket
-const attemptsByInstance = new Map(); // instanceId -> number
+const socketByInstance = new Map();
+const attemptsByInstance = new Map();
 const MAX_RECONNECT_ATTEMPTS = 3;
 const RECONNECT_DELAY = 2000;
-
-async function getWsBaseUrl() {
-    // Prefer /config.js injection
-    if (typeof window !== 'undefined' && window.__BACKEND_URL__) {
-        const httpBase = String(window.__BACKEND_URL__).replace(/\/$/, '');
-        return httpBase.replace(/^http:/, 'ws:').replace(/^https:/, 'wss:');
-    }
-    // Fall-back to /api/config
-    try {
-        const res = await fetch('/api/config');
-        if (res.ok) {
-            const ct = res.headers.get('content-type') || '';
-            if (ct.includes('application/json')) {
-                const data = await res.json();
-                if (data && data.backend_url) {
-                    const httpBase = String(data.backend_url).replace(/\/$/, '');
-                    return httpBase.replace(/^http:/, 'ws:').replace(/^https:/, 'wss:');
-                }
-            }
-        }
-    } catch {}
-    throw new Error('Backend URL is not configured');
-}
 
 export async function initializeWebSocket(instanceId, clientId, messageHandler, onClose) {
     const email = globalAuth.getEmail();
@@ -41,7 +18,7 @@ export async function initializeWebSocket(instanceId, clientId, messageHandler, 
 
     let wsBaseUrl;
     try {
-        wsBaseUrl = await getWsBaseUrl();
+        wsBaseUrl = await getWebSocketUrl();
     } catch (e) {
         console.error('Failed to resolve WebSocket base URL:', e);
         if (onClose) onClose();

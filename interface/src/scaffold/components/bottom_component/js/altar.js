@@ -1,4 +1,6 @@
 import globalAuth from '/src/scaffold/shared/instance/js/globalAuth.js';
+import config from '/src/scaffold/shared/config/config.js';
+import { getWebSocketUrl } from '/src/scaffold/shared/config/websocket.js';
 
 export class AltarTerminal {
     constructor(spotlightAddress) {
@@ -27,62 +29,15 @@ export class AltarTerminal {
         this.setupEventListeners();
     }
 
-    async loadConfigJs() {
-        return new Promise((resolve) => {
-            try {
-                const script = document.createElement('script');
-                script.src = '/config.js';
-                script.onload = () => resolve();
-                script.onerror = () => resolve();
-                document.head.appendChild(script);
-            } catch {
-                resolve();
-            }
-        });
-    }
-
     async initialize() {
         if (this.isInitialized) return;
         
         try {
-            // Check if backend URL is already available from server-side injection
-            if (window.__BACKEND_URL__) {
-                this.spotlightAddress = String(window.__BACKEND_URL__).replace(/^https?:\/\//, '').replace(/\/$/, '');
-                this.isInitialized = true;
-                await this.ensureConversation();
-                this.setupWebSocket();
-                return;
-            }
-
-            // Attempt to load from /config.js (served by Rust app, reads .env)
-            await this.loadConfigJs();
-            if (window.__BACKEND_URL__) {
-                this.spotlightAddress = String(window.__BACKEND_URL__).replace(/^https?:\/\//, '').replace(/\/$/, '');
-                this.isInitialized = true;
-                await this.ensureConversation();
-                this.setupWebSocket();
-                return;
-            }
-            
-            // Try to load from JSON config endpoint (fallback)
-            try {
-                const response = await fetch('/api/config');
-                if (response.ok) {
-                    const config = await response.json();
-                    if (config.backend_url) {
-                        this.spotlightAddress = String(config.backend_url).replace(/^https?:\/\//, '').replace(/\/$/, '');
-                        this.isInitialized = true;
-                        await this.ensureConversation();
-                        this.setupWebSocket();
-                        return;
-                    }
-                }
-            } catch (configError) {
-                // Ignore if not available
-            }
-            
-            // No configuration source resolved
-            throw new Error('Backend URL is not configured');
+            const backendUrl = await config.getBackendUrl();
+            this.spotlightAddress = String(backendUrl).replace(/^https?:\/\//, '').replace(/\/$/, '');
+            this.isInitialized = true;
+            await this.ensureConversation();
+            this.setupWebSocket();
         } catch (error) {
             console.error('Failed to initialize AltarTerminal:', error);
             this.addMessageToChat('Failed to initialize: ' + error.message, 'altar');
@@ -314,13 +269,12 @@ export class AltarTerminal {
         }
     }
 
-    setupWebSocket() {
+    async setupWebSocket() {
         if (!this.spotlightAddress) {
             console.error('Cannot setup WebSocket: spotlightAddress not initialized');
             return;
         }
         
-        // Generate unique client_id for this connection
         const clientId = 'altar_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         const token = globalAuth.getToken();
         
@@ -329,7 +283,8 @@ export class AltarTerminal {
             return;
         }
         
-        const wsUrl = `ws://${this.spotlightAddress}/ws/${clientId}?token=${encodeURIComponent(token)}`;
+        const wsBaseUrl = await getWebSocketUrl();
+        const wsUrl = `${wsBaseUrl}/ws/${clientId}?token=${encodeURIComponent(token)}`;
         this.ws = new WebSocket(wsUrl);
 
         this.ws.onopen = () => {

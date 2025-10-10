@@ -1,12 +1,8 @@
 import { state } from '../core/state.js';
+import config from '/src/scaffold/shared/config/config.js';
 
-// Determine backend base URL (do not rely on relative /api which hits the static server)
 function getBackendBaseUrl() {
-  // Prefer value injected by Rust static server
-  if (typeof window !== 'undefined' && window.__BACKEND_URL__) {
-    return String(window.__BACKEND_URL__).replace(/\/$/, '');
-  }
-  throw new Error('Backend URL is not configured');
+  return config.getBackendUrlSync();
 }
 
 async function fetchJson(path, options) {

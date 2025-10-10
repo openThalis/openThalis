@@ -1,7 +1,5 @@
-// Program renderer functionality
 let currentProgram = null;
 
-// Get authentication token from localStorage (shared with parent)
 function getAuthToken() {
   try {
     return localStorage.getItem('thalis_auth_access_token');
@@ -11,14 +9,15 @@ function getAuthToken() {
   }
 }
 
-// Use the app's authenticated http client when embedded under scaffold tabs
 async function fetchJsonAuth(endpoint) {
-  const baseUrl = String(window.__BACKEND_URL__).replace(/\/$/, '');
   const authToken = getAuthToken();
-
-  // If we have an auth token, use it
+  
   if (authToken) {
     try {
+      const configMod = await import('/src/scaffold/shared/config/config.js');
+      const config = configMod.default;
+      const baseUrl = await config.getBackendUrl();
+      
       const res = await fetch(`${baseUrl}/api${endpoint}`, {
         method: 'GET',
         credentials: 'include',
@@ -29,20 +28,17 @@ async function fetchJsonAuth(endpoint) {
       });
       const data = await res.json().catch(() => null);
       if (!res.ok) {
-        const errorMsg = (data && (data.error || data.detail)) || `Request failed: ${res.status}`;
-        throw new Error(errorMsg);
+        throw new Error((data && (data.error || data.detail)) || `Request failed: ${res.status}`);
       }
       return data;
     } catch (e) {
-      console.warn('Auth token request failed:', e);
-      // Fall through to other methods
+      console.warn('Auth token request failed, trying httpClient:', e);
     }
   }
-
-  // Try to use scaffold httpClient if available
+  
   try {
     if (window.top && window.top !== window) {
-      const mod = await import('/src/scaffold/shared/utils/http/httpClient.js');
+      const mod = await import('/src/scaffold/shared/http/httpClient.js');
       const httpClient = mod.default;
       const res = await httpClient.api(endpoint, { method: 'GET', credentials: 'include' });
       const data = await res.json();
@@ -50,30 +46,10 @@ async function fetchJsonAuth(endpoint) {
       return data;
     }
   } catch (e) {
-    console.warn('Scaffold httpClient not available:', e);
+    console.error('Failed to fetch data:', e);
+    throw e;
   }
-
-  // Final fallback: direct fetch with cookies only (no auth header)
-  const res = await fetch(`${baseUrl}/api${endpoint}`, {
-    method: 'GET',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  const data = await res.json().catch(() => null);
-  if (!res.ok) {
-    const errorMsg = (data && (data.error || data.detail)) || `Request failed: ${res.status}`;
-    throw new Error(errorMsg);
-  }
-  return data;
 }
-
-// Get backend URL
-const getBackendUrl = () => {
-  if (!window.__BACKEND_URL__) throw new Error('Backend URL is not configured');
-  return String(window.__BACKEND_URL__).replace(/\/$/, '');
-};
 
 // Show loading state
 const showLoading = () => {

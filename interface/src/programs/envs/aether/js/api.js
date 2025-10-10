@@ -1,4 +1,4 @@
-import httpClient from '/src/scaffold/shared/utils/http/httpClient.js';
+import httpClient from '/src/scaffold/shared/http/httpClient.js';
 
 export async function listPrograms() {
     const res = await httpClient.apiGet('/programs');
