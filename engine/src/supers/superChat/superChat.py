@@ -3,7 +3,7 @@ import threading
 from src.eido.eido import eido
 
 
-class superEido():
+class superChat():
     def __init__(self, email, agent_name, conversation_id, stop_event: threading.Event):
         self.email = email
         self.agent_name = agent_name
@@ -50,7 +50,7 @@ class superEido():
                     print(f"\n\n[ERROR]: Eido processing failed for agent: {self.agent_name}")
                 
         except Exception as e:
-            print(f"\n\n[ERROR]: Error in superEido: {str(e)}")
+            print(f"\n\n[ERROR]: Error in superChat: {str(e)}")
         finally:
             await self.cleanup()
 
@@ -70,12 +70,12 @@ def run_environment(email, stop_event, attachment):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         
-        processor = superEido(email, agent_name, conversation_id, stop_event)
+        processor = superChat(email, agent_name, conversation_id, stop_event)
         loop.run_until_complete(processor.initialize())
         loop.run_until_complete(processor.run())
         
     except Exception as e:
-        print(f"Error in superEido environment: {str(e)}")
+        print(f"Error in superChat environment: {str(e)}")
     finally:
         try:
             loop.run_until_complete(loop.shutdown_asyncgens())

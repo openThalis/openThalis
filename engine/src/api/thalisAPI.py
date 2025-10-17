@@ -21,7 +21,7 @@ class thalisAPI():
             thread_id = engine_instance.create_thread(
                 attachment=attachment,
                 env_mode=True,
-                env_module_path="src/supers/superEido/superEido.py",
+                env_module_path="src/supers/superChat/superChat.py",
                 email=self.email
             )
             

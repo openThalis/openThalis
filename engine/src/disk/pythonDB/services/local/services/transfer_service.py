@@ -2,7 +2,7 @@ import os
 import shutil
 from typing import List
 
-from src.disk.localBE.models import errors as E
+from src.disk.pythonDB.services.local import errors as E
 
 
 def _generate_copy_path(original_path: str, dest_dir_path: str) -> str:

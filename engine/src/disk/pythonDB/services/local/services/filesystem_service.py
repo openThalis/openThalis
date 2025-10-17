@@ -3,9 +3,9 @@ import time
 import shutil
 from typing import Dict, List, Optional, Tuple
 
-from src.disk.localBE.models.dto import DirectoryEntryDTO, FilePropertiesDTO
-from src.disk.localBE.models import errors as E
-from src.disk.localBE.services.mime_service import guess_mime_type
+from src.disk.pythonDB.services.local.schemas import DirectoryEntryDTO, FilePropertiesDTO
+from src.disk.pythonDB.services.local import errors as E
+from src.disk.pythonDB.services.local.services.mime_service import guess_mime_type
 
 
 def serialize_dir_entry(dir_entry: os.DirEntry) -> DirectoryEntryDTO:

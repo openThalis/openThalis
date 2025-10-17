@@ -34,7 +34,7 @@ export class AltarTerminal {
         
         try {
             const backendUrl = await config.getBackendUrl();
-            this.spotlightAddress = String(backendUrl).replace(/^https?:\/\//, '').replace(/\/$/, '');
+            this.spotlightAddress = String(backendUrl).replace(/\/$/, '');
             this.isInitialized = true;
             await this.ensureConversation();
             this.setupWebSocket();
@@ -121,7 +121,7 @@ export class AltarTerminal {
             const email = globalAuth.getEmail();
             if (!token || !email) return;
             
-            const base = `http://${this.spotlightAddress}`.replace(/\/$/, '');
+            const base = this.spotlightAddress;
             
             // First, try to find existing altar conversation by querying for the reserved title
             try {
@@ -223,7 +223,7 @@ export class AltarTerminal {
             const token = globalAuth.getToken();
             if (!token) return;
 
-            const base = `http://${this.spotlightAddress}`.replace(/\/$/, '');
+            const base = this.spotlightAddress;
             const response = await fetch(`${base}/api/conversations/${this.conversationId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -338,7 +338,7 @@ export class AltarTerminal {
         await this.initialize();
         
         try {
-            const response = await fetch(`http://${this.spotlightAddress}/ping_server`);
+            const response = await fetch(`${this.spotlightAddress}/ping_server`);
             const data = await response.text();
             this.addMessageToChat(`Ping response: ${data}`, 'altar');
         } catch (error) {
@@ -362,7 +362,7 @@ export class AltarTerminal {
         this.addMessageToChat('/cch', 'user');
 
         try {
-            const response = await this.fetchWithRetries(`http://${this.spotlightAddress}/process_request`, {
+            const response = await this.fetchWithRetries(`${this.spotlightAddress}/process_request`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -419,7 +419,7 @@ export class AltarTerminal {
         this.userInput.value = '';
 
 	    	try {
-	    		const response = await this.fetchWithRetries(`http://${this.spotlightAddress}/process_request`, {
+	    		const response = await this.fetchWithRetries(`${this.spotlightAddress}/process_request`, {
 	    			method: 'POST',
 	    			headers: {
 	    				'Content-Type': 'application/json',

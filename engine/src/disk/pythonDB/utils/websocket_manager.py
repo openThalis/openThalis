@@ -9,7 +9,6 @@ class WebSocketManager:
         try:
             await websocket.accept()
             self.active_connections[client_id] = {"websocket": websocket, "email": email}
-            print("connection open")
         except Exception as e:
             print(f"Error accepting connection: {e}")
             raise
@@ -17,7 +16,6 @@ class WebSocketManager:
     def disconnect(self, client_id: str):
         if client_id in self.active_connections:
             del self.active_connections[client_id]
-            print(f"Client {client_id} disconnected")
 
     async def send_message(self, client_id: str, message: dict):
         if client_id in self.active_connections:
@@ -87,5 +85,4 @@ class WebSocketManager:
         except Exception as e:
             print(f"Connection error: {e}")
         finally:
-            self.disconnect(client_id)
-            print("connection closed") 
+            self.disconnect(client_id) 

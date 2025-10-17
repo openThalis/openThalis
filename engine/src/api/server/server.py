@@ -21,10 +21,9 @@ from src.disk.pythonDB.services.settings.api import router as settings_router
 from src.disk.pythonDB.services.eido.api import router as eido_router
 from src.disk.pythonDB.services.tasks.api import router as tasks_router
 from src.disk.pythonDB.services.aether.api import router as aether_router
-from src.disk.pythonDB.utils.websocket_manager import WebSocketManager
+from src.disk.pythonDB.services.local.api import router as local_router
 
-# Import localBE router
-from src.disk.localBE.localeBE_router import router as localbe_router
+from src.disk.pythonDB.utils.websocket_manager import WebSocketManager
 
 # Global server instance (to be replaced with dependency injection)
 SERVER_INSTANCE = None
@@ -106,7 +105,7 @@ class thalisServer:
         api_router.include_router(eido_router, tags=["eido"])
         api_router.include_router(tasks_router, tags=["tasks"])
         api_router.include_router(aether_router, tags=["aether"])
-        api_router.include_router(localbe_router, tags=["local"])
+        api_router.include_router(local_router, tags=["local"])
         
         # Unified config endpoint
         @api_router.get("/config")

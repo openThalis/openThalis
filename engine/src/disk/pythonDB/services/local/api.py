@@ -7,9 +7,9 @@ from fastapi import APIRouter, HTTPException, UploadFile, File, Query, Body, Hea
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 import mimetypes
 
-from src.disk.localBE.config import resolve_home_path
-from src.disk.localBE.services.system_service import list_drives, known_folders
-from src.disk.localBE.services.filesystem_service import (
+from src.disk.pythonDB.services.local.config import resolve_home_path
+from src.disk.pythonDB.services.local.services.system_service import list_drives, known_folders
+from src.disk.pythonDB.services.local.services.filesystem_service import (
     list_directory,
     file_properties,
     mkdir as svc_mkdir,
@@ -17,13 +17,13 @@ from src.disk.localBE.services.filesystem_service import (
     rename as svc_rename,
     delete_path as svc_delete,
 )
-from src.disk.localBE.services.path_service import (
+from src.disk.pythonDB.services.local.services.path_service import (
     normalize_input_path,
     sanitize_relative_upload_path,
     ensure_under_directory,
 )
-from src.disk.localBE.services.transfer_service import copy_items, move_items
-from src.disk.localBE.models import errors as E
+from src.disk.pythonDB.services.local.services.transfer_service import copy_items, move_items
+from src.disk.pythonDB.services.local import errors as E
 
 
 router = APIRouter()

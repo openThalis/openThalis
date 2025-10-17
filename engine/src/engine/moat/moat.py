@@ -125,7 +125,7 @@ class moat():
         #await self.show_alive()
         await self.monitor_tasks()
         await self.monitor_aether()
-        await asyncio.sleep(10)
+        await asyncio.sleep(5)
 
     ##############################
 

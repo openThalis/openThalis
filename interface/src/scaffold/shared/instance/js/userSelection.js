@@ -262,16 +262,9 @@ class UserSelection {
             `;
 
             const emailSpan = userItem.querySelector('.user-selection-email');
-            emailSpan.addEventListener('click', () => this.selectUser(email));
-
-            emailSpan.addEventListener('dblclick', (e) => {
-                e.preventDefault();
-                if (this.selectedEmail === email) {
-                    this.handleContinue();
-                } else {
-                    this.selectUser(email);
-                    setTimeout(() => this.handleContinue(), 100);
-                }
+            emailSpan.addEventListener('click', () => {
+                this.selectUser(email);
+                this.handleContinue();
             });
 
             this.initializeUserDropdown(userItem, email);

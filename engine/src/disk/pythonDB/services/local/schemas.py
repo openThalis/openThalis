@@ -1,9 +1,8 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 from typing import Optional
 
 
-@dataclass
-class DirectoryEntryDTO:
+class DirectoryEntryDTO(BaseModel):
     name: str
     path: str
     isDir: bool
@@ -12,8 +11,7 @@ class DirectoryEntryDTO:
     mimeType: Optional[str]
 
 
-@dataclass
-class FilePropertiesDTO:
+class FilePropertiesDTO(BaseModel):
     path: str
     name: str
     isDir: bool
@@ -22,6 +20,4 @@ class FilePropertiesDTO:
     createdIso: str
     mimeType: Optional[str]
     ext: Optional[str]
-
-
 
