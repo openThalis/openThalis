@@ -4,7 +4,7 @@
 async def cch(email, conversation_id):
     """Clear conversation history"""
     try:
-        from src.disk.pythonDB.services.chats.crud import clear_conversation_messages
+        from src.disk.services.chats.crud import clear_conversation_messages
         success = await clear_conversation_messages(email, conversation_id)
 
         from src.api.server.server import thalisServer

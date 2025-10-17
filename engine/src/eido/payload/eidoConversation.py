@@ -1,7 +1,7 @@
 import os
 from src.eido.utils.eido_config import fetch_local_mode, fetch_local_path
 
-from src.disk.pythonDB.services.chats import crud as chat_crud
+from src.disk.services.chats import crud as chat_crud
 
 class eidoConversation():
     def __init__(self, email, conversation_id):

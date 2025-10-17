@@ -1,9 +1,9 @@
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
 from datetime import datetime, timezone, UTC
-from src.disk.pythonDB.users.models import User
-from src.disk.pythonDB.services.tasks.models import Task
-from src.disk.pythonDB.core.db import AsyncSessionLocal, init_db
+from src.disk.users.models import User
+from src.disk.services.tasks.models import Task
+from src.disk.core.db import AsyncSessionLocal, init_db
 
 
 class moatTasks:

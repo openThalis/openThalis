@@ -1,8 +1,8 @@
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
-from src.disk.pythonDB.users.models import User
-from src.disk.pythonDB.services.aether.models import Program
-from src.disk.pythonDB.core.db import AsyncSessionLocal, init_db
+from src.disk.users.models import User
+from src.disk.services.aether.models import Program
+from src.disk.core.db import AsyncSessionLocal, init_db
 
 
 class moatAether:

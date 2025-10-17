@@ -13,7 +13,7 @@ from src.eido.models.ollama.ollama_main import ollama_main_class
 from src.eido.models.anthropic.anthropic_main import anthropic_main_class
 
 
-from src.disk.pythonDB.services.chats import crud as chat_crud
+from src.disk.services.chats import crud as chat_crud
 
 class eido:
     def __init__(self, agent_name, email, conversation_id):

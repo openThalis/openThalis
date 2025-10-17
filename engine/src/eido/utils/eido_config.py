@@ -1,7 +1,7 @@
 from typing import Optional, Dict, Any
 
-from src.disk.pythonDB.services.eido import crud as eido_crud
-from src.disk.pythonDB.services.settings import crud as settings_crud
+from src.disk.services.eido import crud as eido_crud
+from src.disk.services.settings import crud as settings_crud
 
 
 EIDO_KEY_MAP: Dict[str, str] = {

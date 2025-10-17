@@ -3,11 +3,11 @@ import asyncio
 import threading
 from datetime import datetime, timezone
 from src.api.thalisAPI import thalisAPI
-from src.disk.pythonDB.core.db import AsyncSessionLocal
-from src.disk.pythonDB.users.crud import get_or_create_user
-from src.disk.pythonDB.services.chats import crud as chats_crud
-from src.disk.pythonDB.services.chats.models import Conversation
-from src.disk.pythonDB.services.aether import crud as aether_crud
+from src.disk.core.db import AsyncSessionLocal
+from src.disk.users.crud import get_or_create_user
+from src.disk.services.chats import crud as chats_crud
+from src.disk.services.chats.models import Conversation
+from src.disk.services.aether import crud as aether_crud
 from src.supers.superAether.components import prompts as aether_prompts
 
 class superAether():

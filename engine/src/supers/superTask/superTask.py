@@ -5,11 +5,11 @@ from sqlalchemy import update
 from sqlalchemy.future import select
 from src.api.thalisAPI import thalisAPI
 from datetime import datetime, timezone
-from src.disk.pythonDB.core.db import AsyncSessionLocal
-from src.disk.pythonDB.services.tasks.models import Task
-from src.disk.pythonDB.users.crud import get_or_create_user
-from src.disk.pythonDB.services.chats import crud as chats_crud
-from src.disk.pythonDB.services.chats.models import Conversation
+from src.disk.core.db import AsyncSessionLocal
+from src.disk.services.tasks.models import Task
+from src.disk.users.crud import get_or_create_user
+from src.disk.services.chats import crud as chats_crud
+from src.disk.services.chats.models import Conversation
 
 class superTask():
     def __init__(self, email, task_data, stop_event: threading.Event):

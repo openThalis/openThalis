@@ -9,21 +9,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 
-from src.disk.pythonDB.core.security import verify_websocket_token
-from src.disk.pythonDB.core.config import settings
-from src.disk.pythonDB.core.db import init_db
+from src.disk.core.security import verify_websocket_token
+from src.disk.core.config import settings
+from src.disk.core.db import init_db
 
 # Import pythonDB routers and services
-from src.disk.pythonDB.services.auth import router as auth_router
-from src.disk.pythonDB.services.chats.api import router as chat_router
-from src.disk.pythonDB.services.chats.logic import ChatsService
-from src.disk.pythonDB.services.settings.api import router as settings_router
-from src.disk.pythonDB.services.eido.api import router as eido_router
-from src.disk.pythonDB.services.tasks.api import router as tasks_router
-from src.disk.pythonDB.services.aether.api import router as aether_router
-from src.disk.pythonDB.services.local.api import router as local_router
+from src.disk.services.auth import router as auth_router
+from src.disk.services.chats.api import router as chat_router
+from src.disk.services.chats.logic import ChatsService
+from src.disk.services.settings.api import router as settings_router
+from src.disk.services.eido.api import router as eido_router
+from src.disk.services.tasks.api import router as tasks_router
+from src.disk.services.aether.api import router as aether_router
+from src.disk.services.local.api import router as local_router
 
-from src.disk.pythonDB.utils.websocket_manager import WebSocketManager
+from src.disk.utils.websocket_manager import WebSocketManager
 
 # Global server instance (to be replaced with dependency injection)
 SERVER_INSTANCE = None

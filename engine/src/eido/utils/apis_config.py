@@ -1,5 +1,5 @@
 from typing import Optional
-from src.disk.pythonDB.services.settings import crud as settings_crud
+from src.disk.services.settings import crud as settings_crud
 
 
 async def fetch_api_key_for_provider(provider: str, email: Optional[str] = None) -> str:
